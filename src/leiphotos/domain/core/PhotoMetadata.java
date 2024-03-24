@@ -10,12 +10,13 @@ public class PhotoMetadata implements RegExpMatchable{
 	private String camara;
 	private String manufacturer;
 	private LocalDateTime date;
-	private GPSCoordinates coordinates;
+	private GPSLocation location;
 
-	public PhotoMetadata() {
-		
-		
-
+	public PhotoMetadata(String camara, String manufacterer, LocalDateTime date, GPSLocation location) {
+		this.camara = camara;
+		this.manufacturer = manufacterer;
+		this.date = date;
+		this.location = location;
 	}
 	
 	@Override

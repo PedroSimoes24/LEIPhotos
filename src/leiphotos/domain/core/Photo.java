@@ -13,14 +13,16 @@ public class Photo implements IPhoto, RegExpMatchable {
     private File pathToFile;
     private LocalDateTime dateAddedLib;
     private PhotoMetadata metadata;
+    private long size;
     private boolean isFavourite;
     
-    Photo(String title, LocalDateTime dateAddedLib, PhotoMetadata meta, File pathToFile) {
+    Photo(String title, LocalDateTime dateAddedLib, PhotoMetadata metadata, File pathToFile) {
     	
     	this.title = title;
     	this.pathToFile = pathToFile;
     	this.dateAddedLib = dateAddedLib;
-    	this.metadata = meta;
+    	this.metadata = metadata;
+        this.size = pathToFile.length();
     }
 
 	@Override
@@ -55,7 +57,7 @@ public class Photo implements IPhoto, RegExpMatchable {
 
 	@Override
 	public long size() {
-		return pathToFile.length();
+		return size;
 	}
 
 	@Override
