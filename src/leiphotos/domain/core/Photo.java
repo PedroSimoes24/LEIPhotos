@@ -50,7 +50,6 @@ public class Photo implements IPhoto, RegExpMatchable {
 
 	@Override
 	public Optional<? extends GPSCoordinates> getPlace() {
-		// TODO Auto-generated method stub
 		return Optional.empty();
 	}
 

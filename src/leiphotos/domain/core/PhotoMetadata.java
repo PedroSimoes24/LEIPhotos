@@ -13,7 +13,9 @@ public class PhotoMetadata implements RegExpMatchable{
 	private GPSCoordinates coordinates;
 
 	public PhotoMetadata() {
-		// TODO
+		
+		
+
 	}
 	
 	@Override
