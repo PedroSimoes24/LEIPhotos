@@ -1,27 +1,30 @@
 public class JavaXTMetadataReaderAdapter implements JavaXTJpegMetadataReader {
 
+    private JavaXTJpegMetadataReader dataReader;
+
     public JavaXTMetadataReaderAdapter(File file) {
-        //TODO
+        dataReader = new JavaXTJpegMetadataReader(file);
     }
 
     public String getCamera() {
-        //TODO
+        return dataReader.getCamara();
     }
 
     public String getManufacturer() {
-        //TODO
+        return dataReader.getManufacturer();
     }
 
     public LocalDateTime getDate() {
-        //TODO
+        //por verificar se a formatação vem correta da classe do objeto anterior
+        return LocalDateTime.parse(dataReader.getDate());
     }
 
     public String getAperture() {
-        //TODO
+        return dataReader.getAperture();
     }
 
     public double[] getGpsLocation()  {
-        //TODO
+        return dataReader.getGPS();
     }
 
 }
