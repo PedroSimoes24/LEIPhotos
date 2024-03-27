@@ -17,7 +17,6 @@ public class Photo implements IPhoto, RegExpMatchable {
     private boolean isFavourite;
     
     Photo(String title, LocalDateTime dateAddedLib, PhotoMetadata metadata, File pathToFile) {
-    	
     	this.title = title;
     	this.pathToFile = pathToFile;
     	this.dateAddedLib = dateAddedLib;
@@ -32,12 +31,16 @@ public class Photo implements IPhoto, RegExpMatchable {
 
 	@Override
 	public LocalDateTime capturedDate() {
-		return null; // metadataReader.getDate();	
+		return metadata.date;
 	}
 
 	@Override
 	public LocalDateTime addedDate() {
 		return dateAddedLib;
+	}
+
+	public void setAddedDate(LocalDateTime date) {
+		dateAddedLib = date;
 	}
 
 	@Override
@@ -52,7 +55,7 @@ public class Photo implements IPhoto, RegExpMatchable {
 
 	@Override
 	public Optional<? extends GPSCoordinates> getPlace() {
-		return Optional.empty();
+		return metadata.location;
 	}
 
 	@Override
@@ -67,7 +70,7 @@ public class Photo implements IPhoto, RegExpMatchable {
 
 	@Override
 	public boolean matches(String regexp) {
-		return false;
+		return ;
 	}
 
 }

@@ -23,9 +23,9 @@ public enum PhotoFactory {
 	}
 
 	private PhotoMetadata extractMetadata(File image) {
-		JavaXTJpegMetadataReader reader = new JavaXTJpegMetadataReader(image);
-		double[] coordinates = reader.getGPS();
+		JavaXTJpegMetadataReader reader = new JavaXTMetadataReaderAdapter(image);
+		double[] coordinates = reader.getGPSLocation();
 		return new PhotoMetadata(reader.getCamara(), reader.getManufacturer(), 
-								 LocalDateTime.parse(reader.getDate()), new GPSLocation(coordinates[0], coordinates[1], null));
+								 LocalDateTime.parse(reader.getDate()), new GPSLocation(coordinates[1], coordinates[0], ""));
 	}
 }

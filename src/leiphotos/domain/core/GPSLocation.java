@@ -8,18 +8,7 @@ import leiphotos.utils.RegExpMatchable;
  * along with a suiting description.
  */
 
-public class GPSLocation implements GPSCoordinates, RegExpMatchable {
-
-    private double latitude;
-    private double longitude;
-    private String description;
-
-    // TODO javadoc
-    public GPSLocation(double latitude, double longitude, String desc) {
-        this.latitude = latitude;
-        this.longitude = longitude;
-        description = desc;
-    }
+public record GPSLocation(double latitude, double longitude, String description) implements GPSCoordinates, RegExpMatchable {
 
     @Override
     public double latitude() {
@@ -33,7 +22,15 @@ public class GPSLocation implements GPSCoordinates, RegExpMatchable {
 
     @Override
     public boolean matches(String regexp) {
-        return description == regexp; // not sure
+        return description.matches(regexp); // not sure
+    }
+
+    /**
+    *
+    */
+
+    public void setDescription(String desc) {
+        description = desc;
     }
     
 }
