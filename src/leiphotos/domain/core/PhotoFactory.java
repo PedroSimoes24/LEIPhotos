@@ -3,15 +3,13 @@ package leiphotos.domain.core;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
-
-import leiphotos.domain.metadatareader.JpegMetadataReader;
-import leiphotos.services.JavaXTJpegMetadataReader;
+import leiphotos.domain.metadatareader.JavaXTMetadataReaderAdapter;
 
 public enum PhotoFactory {
 	
 	INSTANCE;
 
-	public Photo createPhoto(String title, String pathToPhotoFile) throws java.io.FileNotFoundException {
+	Photo createPhoto(String title, String pathToPhotoFile) throws java.io.FileNotFoundException {
 	
 		File photo = new File(pathToPhotoFile);
 		
@@ -23,9 +21,9 @@ public enum PhotoFactory {
 	}
 
 	private PhotoMetadata extractMetadata(File image) {
-		JavaXTJpegMetadataReader reader = new JavaXTMetadataReaderAdapter(image);
-		double[] coordinates = reader.getGPSLocation();
-		return new PhotoMetadata(reader.getCamara(), reader.getManufacturer(), 
-								 LocalDateTime.parse(reader.getDate()), new GPSLocation(coordinates[1], coordinates[0], ""));
+		JavaXTMetadataReaderAdapter reader = new JavaXTMetadataReaderAdapter(image);
+		double[] coordinates = reader.getGpsLocation();
+		return new PhotoMetadata(reader.getCamera(), reader.getManufacturer(), 
+								 reader.getDate(), new GPSLocation(coordinates[0], coordinates[1], ""));
 	}
 }
