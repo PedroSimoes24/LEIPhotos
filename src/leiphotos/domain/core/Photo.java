@@ -1,5 +1,5 @@
 package leiphotos.domain.core;
-// Imports coloco no package ou coloco noutro lugar?
+
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -12,6 +12,8 @@ import leiphotos.utils.RegExpMatchable;
 			 *  -> REVIEW matches() METHOD
 			 *  -> REVIEW THE IMPLEMENTATION OF size() AND getPlace()
 			 *  -> REVIEW THE WAY THE DATE ADDED TO LIB IS MADE IN THIS IMPLEMENTATION
+			 *  -> THINK IF ITS NECESSARY TO HAVE changeFilepath()
+			 *  -> CHECK IF THERE IS A WAY TO IMPORT ALL OF THE FILES INSTEAD OF HAVING 6 OF THEM TOGETHER
 			 */
 
 
@@ -62,16 +64,6 @@ public class Photo implements IPhoto, RegExpMatchable {
 		return dateAddedLib;
 	}
 
-	/**
-	 * Defines when this photo was added into the library
-	 * 
-	 * @param date when this photo was added to the library
-	 */
-
-	public void setAddedDate(LocalDateTime date) {
-		dateAddedLib = date;
-	}
-
 	@Override
 	public boolean isFavourite() {
 		return isFavourite;
@@ -97,7 +89,50 @@ public class Photo implements IPhoto, RegExpMatchable {
 		return pathToFile;
 	}
 
-	@Override // Duvidas nisto
+	/**
+	 * Defines when this photo was added into the library to {@code date}
+	 * 
+	 * @param date when this photo was added to the library
+	 */
+
+	public void setAddedDate(LocalDateTime date) {
+		dateAddedLib = date;
+	}
+
+	/**
+	 * Untoggles this photo as favourite
+	 * 
+	 * @ensures !isFavourite()
+	 */
+
+	public void untoggleFavourite() {
+		isFavourite = false;
+	}
+
+	/**
+	 * Changes the title of this photo to {@code newTitle}
+	 * 
+	 * @param newTitle new title of this photo
+	 * @ensures title().equals(newTitle)
+	 */
+
+	public void setTitle(String newTitle) {
+		title = newTitle;
+	}
+
+	/**
+	 * This method lets the user change the file path of this object
+	 * to the one passed as a parameter, therefore to {@code newPath}
+	 * 
+	 * @param newPath the new path of the object
+	 */
+
+	public void changeFilepath(String newPath) {
+		File temp = new File(newPath);
+		pathToFile = temp;
+	}
+
+	@Override 
 	public boolean matches(String regexp) {
 		return title.matches(regexp) && metadata.matches(regexp);
 	}
