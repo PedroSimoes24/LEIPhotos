@@ -1,3 +1,5 @@
+package leiphotos.domain.metadatareader;
+
 public class JavaXTMetadataReaderAdapter implements JavaXTJpegMetadataReader {
 
     private JavaXTJpegMetadataReader dataReader;

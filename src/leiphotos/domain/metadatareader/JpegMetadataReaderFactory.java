@@ -1,3 +1,5 @@
+package leiphotos.domain.metadatareader;
+
 public enum JpegMetadataReaderFactory {
 
     INSTANCE;
