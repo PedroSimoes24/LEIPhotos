@@ -31,7 +31,17 @@ class PhotoTest {
 
 	@Test
 	void testToggleFavourite() {
-		//COMPLETE ME
+		Photo photo = new Photo("testeToggleFavourite", null, null, null);
+		photo.toggleFavourite();
+		assertEquals(true, photo.isFavourite());
+	}
+
+	@Test
+	void testUntoggleFavourite() {
+		Photo photo = new Photo("testeUntoggleFavourite", null, null, null);
+		photo.toggleFavourite();
+		photo.untoggleFavourite();
+		assertEquals(false, photo.isFavourite());
 	}
 
 	@Test
