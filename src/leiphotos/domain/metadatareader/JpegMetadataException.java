@@ -1,7 +1,14 @@
 package leiphotos.domain.metadatareader;
 
+
+/**
+ * Exception thrown when there is an error loading metadata resource.
+ */
 public class JpegMetadataException extends Exception {
 
+    /**
+     * Constructs a new JpegMetadataException with the default detail message.
+     */
     public JpegMetadataException() {
         super("Unable to load metadata resource");
     }

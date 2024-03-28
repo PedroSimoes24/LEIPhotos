@@ -25,7 +25,9 @@ public class JavaXTMetadataReaderAdapterTest {
         Assert.assertEquals(dr2.getCamera(),"iPhone SE (3rd generation)");
         Assert.assertEquals(dr3.getCamera(),"DSC-HX1");
         Assert.assertEquals(dr4.getCamera(),"iPhone 7");
-        
 
+        
     }
+
+
 }
