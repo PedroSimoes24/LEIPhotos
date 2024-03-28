@@ -1,3 +1,8 @@
+package leiphotos.domain.metadatareader;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+
 public enum JpegMetadataReaderFactory {
 
     INSTANCE;
@@ -5,7 +10,7 @@ public enum JpegMetadataReaderFactory {
     JpegMetadataReader createMetadataReader(File file) throws 
     JpegMetadataException,FileNotFoundException {
 
-        return new JavaXTJpegMetadataReaderAdapter(file);
+        return new JavaXTMetadataReaderAdapter(file);
     }
 
 }
