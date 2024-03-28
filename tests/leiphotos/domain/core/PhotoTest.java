@@ -17,28 +17,56 @@ class PhotoTest {
 	@Test
 	void testCreatePhotoWithoutGPS() {
 		LocalDateTime expectedCapturedDate = LocalDateTime.of(2024, 1, 1, 0, 0);
-		File expectedFile = new File("test.jpg");
+		File expectedFile = new File("photos/Bean.jpeg");
 		String expectedTitle = "Test Photo";
 		LocalDateTime expectedAddedDate = LocalDateTime.now();
-		//COMPLETE ME
+
+		Photo photo = new Photo(expectedTitle, expectedAddedDate, 
+								new PhotoMetadata(null, null, expectedCapturedDate, null), expectedFile);
+		
+		assertEquals(expectedAddedDate, photo.addedDate());
+		assertEquals(expectedCapturedDate, photo.capturedDate());
+		assertEquals(expectedTitle, photo.title());
+		assertEquals(expectedFile, photo.file());
 
 	}
 
 	@Test
 	void testCreatePhotoWithGPS() {
-		//COMPLETE ME
+
+		LocalDateTime expectedCapturedDate = LocalDateTime.of(2023, 7, 31, 13, 49);
+		File expectedFile = new File("photos/Bean.jpeg");
+		String expectedTitle = "Teste Photo";
+		LocalDateTime expectedAddedDate = LocalDateTime.now();
+
+		double expectedLongitude = 120;
+		double expectedLatitude = 130;
+		GPSLocation location = new GPSLocation(expectedLongitude, expectedLatitude, "");
+
+		Photo photo = new Photo(expectedTitle, expectedAddedDate, 
+								new PhotoMetadata("", "", expectedCapturedDate, location), expectedFile);
+		
+		assertEquals(expectedAddedDate, photo.addedDate());
+		assertEquals(expectedCapturedDate, photo.capturedDate());
+		assertEquals(expectedTitle, photo.title());
+		assertEquals(expectedFile, photo.file());
+
+		GPSCoordinates locationRetrieved = photo.getPlace().get();
+
+		assertEquals(expectedLongitude, locationRetrieved.longitude());
+		assertEquals(expectedLatitude, locationRetrieved.latitude());
 	}
 
 	@Test
 	void testToggleFavourite() {
-		Photo photo = new Photo("testeToggleFavourite", null, null, null);
+		Photo photo = new Photo("testeToggleFavourite", null, null, new File("photos/Bean.jpeg"));
 		photo.toggleFavourite();
 		assertEquals(true, photo.isFavourite());
 	}
 
 	@Test
 	void testUntoggleFavourite() {
-		Photo photo = new Photo("testeUntoggleFavourite", null, null, null);
+		Photo photo = new Photo("testeUntoggleFavourite", null, null, new File("photos/Bean.jpeg"));
 		photo.toggleFavourite();
 		photo.untoggleFavourite();
 		assertEquals(false, photo.isFavourite());
@@ -47,7 +75,7 @@ class PhotoTest {
 	@Test
 	void testSize() { //requires the use of a mock file class
 		long expectedSize = 1024;
-		MockFile expectedFile = new MockFile("test.jpg",expectedSize);
+		MockFile expectedFile = new MockFile("photos/Bean.jpeg",expectedSize);
 		String expectedTitle = "Test Photo";
 		LocalDateTime expectedAddedDate = LocalDateTime.now();
 		//COMPLETE ME
