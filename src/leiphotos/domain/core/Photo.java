@@ -16,7 +16,6 @@ import leiphotos.utils.RegExpMatchable;
 			 *  -> CHECK IF THERE IS A WAY TO IMPORT ALL OF THE FILES INSTEAD OF HAVING 6 OF THEM TOGETHER
 			 */
 
-
 /**
  * This class lets the user create and manipulate objects of the type Photo using its
  * methods and atributes.
