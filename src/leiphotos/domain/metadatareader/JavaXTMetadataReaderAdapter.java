@@ -2,6 +2,7 @@ package leiphotos.domain.metadatareader;
 
 import java.io.File;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import leiphotos.services.JavaXTJpegMetadataReader;
 
@@ -47,7 +48,9 @@ public class JavaXTMetadataReaderAdapter implements JpegMetadataReader {
     @Override
     public LocalDateTime getDate() {
         //por verificar se a formatação vem correta da classe do objeto anterior
-        return LocalDateTime.parse(dataReader.getDate());
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm:ss");
+        return LocalDateTime.parse(dataReader.getDate(), formatter);
     }
 
     /**
