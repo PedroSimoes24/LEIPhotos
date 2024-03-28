@@ -1,6 +1,11 @@
 package leiphotos.domain.metadatareader;
 
-public class JavaXTMetadataReaderAdapter implements JavaXTJpegMetadataReader {
+import java.io.File;
+import java.time.LocalDateTime;
+
+import leiphotos.services.JavaXTJpegMetadataReader;
+
+public class JavaXTMetadataReaderAdapter implements JpegMetadataReader {
 
     private JavaXTJpegMetadataReader dataReader;
 
