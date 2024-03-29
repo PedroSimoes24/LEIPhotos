@@ -10,10 +10,7 @@ import leiphotos.utils.RegExpMatchable;
 			/**
 			 *  TODO := THIS FILE
 			 *  -> REVIEW matches() METHOD
-			 *  -> REVIEW THE IMPLEMENTATION OF size() AND getPlace()
-			 *  -> REVIEW THE WAY THE DATE ADDED TO LIB IS MADE IN THIS IMPLEMENTATION
 			 *  -> THINK IF ITS NECESSARY TO HAVE changeFilepath()
-			 *  -> CHECK IF THERE IS A WAY TO IMPORT ALL OF THE FILES INSTEAD OF HAVING 6 OF THEM TOGETHER
 			 */
 
 /**
@@ -22,12 +19,13 @@ import leiphotos.utils.RegExpMatchable;
  */
 
 public class Photo implements IPhoto, RegExpMatchable {
-    
-	private String title;
+
     private File pathToFile;
-    private LocalDateTime dateAddedLib;
     private PhotoMetadata metadata;
     private long size; // In bytes
+	// Library Data
+	private String title;
+    private LocalDateTime dateAddedLib;
     private boolean isFavourite;
 
 	/**
@@ -41,11 +39,12 @@ public class Photo implements IPhoto, RegExpMatchable {
 	 */
     
     Photo(String title, LocalDateTime dateAddedLib, PhotoMetadata metadata, File pathToFile) {
-    	this.title = title;
-    	this.pathToFile = pathToFile;
-    	this.dateAddedLib = dateAddedLib;
-    	this.metadata = metadata;
-        this.size = pathToFile.length();
+		this.pathToFile = pathToFile;
+		this.metadata = metadata;
+		this.size = pathToFile.length();
+		this.title = title;
+		this.dateAddedLib = dateAddedLib;
+		// isFavourite has a default value of 'false'
     }
 
 	@Override
