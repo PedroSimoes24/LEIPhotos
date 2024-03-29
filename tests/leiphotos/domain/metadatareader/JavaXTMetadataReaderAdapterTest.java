@@ -2,11 +2,25 @@ package leiphotos.domain.metadatareader;
 
 import java.io.File;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * Tests for JavaXTMetadataReaderAdapter
+ * 
+ * Testes comentados não passam porque o leitor nao consegue ler o atributo
+ * ou porque o atributo nao existe logo devolvem null
+ * 
+ * --> solução provavel tratar com uma exceção de tipo diferentes
+ * dependendo do campo que nao se consegue ler
+ * 
+ * site que estou a usar para ver a metadata completa (para debugg):
+ * 
+ *     -->  https://www.metadata2go.com/view-metadata <--
+ * 
+ * 
+ */
 
 public class JavaXTMetadataReaderAdapterTest {
 
@@ -31,11 +45,22 @@ public class JavaXTMetadataReaderAdapterTest {
 
         setUp();
 
-        Assert.assertEquals(dr1.getCamera(),"DSC-HX1");
-        Assert.assertEquals(dr2.getCamera(),"iPhone SE (3rd generation)");
-        Assert.assertEquals(dr3.getCamera(),"DSC-HX1");
-        Assert.assertEquals(dr4.getCamera(),"iPhone 7");
+        Assert.assertEquals("DSC-HX1", dr1.getCamera());
+        Assert.assertEquals("iPhone SE (3rd generation)", dr2.getCamera());
+        Assert.assertEquals("DSC-HX1", dr3.getCamera());
+        Assert.assertEquals("iPhone 7", dr4.getCamera());
 
+    }
+
+    @Test
+    public void getManufacturerTest() {
+
+        setUp();
+
+        Assert.assertEquals("SONY", dr1.getManufacturer());
+        Assert.assertEquals("Apple", dr2.getManufacturer());
+        Assert.assertEquals("SONY", dr3.getManufacturer() );
+        Assert.assertEquals("Apple", dr4.getManufacturer() );
     }
 
     @Test
@@ -44,16 +69,29 @@ public class JavaXTMetadataReaderAdapterTest {
         setUp();
 
         LocalDateTime dt1 = LocalDateTime.of(2023, 7, 31, 13, 49, 46);
-        //LocalDateTime dt2 = LocalDateTime.of(2024, 2, 12, 9, 50, 50, 00);
-        LocalDateTime dt3 = LocalDateTime.of(2015, 8, 12, 13, 1, 44, 56);
-        //LocalDateTime dt4 = LocalDateTime.of(2023, 7, 31, 13, 49, 46);
+        //LocalDateTime dt2 = LocalDateTime.of(2024, 2, 12, 9, 50, 50);
+        LocalDateTime dt3 = LocalDateTime.of(2015, 8, 12, 1, 44, 56);
+        LocalDateTime dt4 = LocalDateTime.of(2022, 5, 1, 11, 5, 16);
+        
 
+        Assert.assertEquals(dt1, dr1.getDate());
 
-        Assert.assertEquals(dr1.getDate(), dt1);
-        //Assert.assertEquals(dr2.getDate(), dt2);  -->     //  nao consegue ler a data/hora da imagem
-        Assert.assertEquals(dr3.getDate(), dt3);            //  possivelmente lançar uma exceção
-        //Assert.assertEquals(dr4.getDate(), dt4);
+        //Assert.assertEquals(dt2, dr2.getDate());
 
+        Assert.assertEquals(dt3, dr3.getDate());                
+        Assert.assertEquals(dt4, dr4.getDate()); 
+
+    }
+
+    @Test
+    public void getApertureTest() {
+
+        setUp();
+
+        //Assert.assertEquals(3, dr1.getAperture());
+        Assert.assertEquals("54823/32325", dr2.getAperture());
+        //Assert.assertEquals(3, dr3.getAperture());
+        Assert.assertEquals("54823/32325", dr4.getAperture());
     }
 
 }
