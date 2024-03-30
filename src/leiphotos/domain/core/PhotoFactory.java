@@ -39,9 +39,6 @@ public enum PhotoFactory {
 			throw new FileNotFoundException();
 		}
 
-		// The date added to library is set to null because the photo being created doesn't imply that it was
-		// added to the library. When the photo is eventually added to the library the photo class has an 
-		// setAddedDate(LocalDateTime) method to set the date that the photo was added.
 		return new Photo(title, LocalDateTime.now(), extractMetadata(photo), photo);
 	}
 
