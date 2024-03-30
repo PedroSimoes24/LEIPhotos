@@ -89,16 +89,6 @@ public class Photo implements IPhoto, RegExpMatchable {
 	}
 
 	/**
-	 * Defines when this photo was added into the library to {@code date}
-	 * 
-	 * @param date when this photo was added to the library
-	 */
-
-	public void setAddedDate(LocalDateTime date) {
-		dateAddedLib = date;
-	}
-
-	/**
 	 * Untoggles this photo as favourite
 	 * 
 	 * @ensures !isFavourite()

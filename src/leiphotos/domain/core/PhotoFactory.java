@@ -42,7 +42,7 @@ public enum PhotoFactory {
 		// The date added to library is set to null because the photo being created doesn't imply that it was
 		// added to the library. When the photo is eventually added to the library the photo class has an 
 		// setAddedDate(LocalDateTime) method to set the date that the photo was added.
-		return new Photo(title, null, extractMetadata(photo), photo);
+		return new Photo(title, LocalDateTime.now(), extractMetadata(photo), photo);
 	}
 
 	/**
@@ -54,7 +54,7 @@ public enum PhotoFactory {
 	 */
 
 	private PhotoMetadata extractMetadata(File image) {
-		JpegMetadataReader reader = JpegMetadataReaderFactory.INSTANCE.createMetadataReader(image);
+		JpegMetadataReader reader = new JavaXTMetadataReaderAdapter(image);
 		double[] coordinates = reader.getGpsLocation();
 		return new PhotoMetadata(reader.getCamera(), reader.getManufacturer(), 
 								 reader.getDate(), new GPSLocation(coordinates[0], coordinates[1], ""));
