@@ -1,18 +1,11 @@
 package leiphotos.domain.core;
-
-import leiphotos.domain.facade.*;
+import leiphotos.domain.facade.IPhoto;
+import leiphotos.domain.facade.GPSCoordinates;
+import leiphotos.utils.RegExpMatchable;
 
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.Optional;
-import leiphotos.utils.RegExpMatchable;
-
-			/**
-			 *  TODO := THIS FILE
-			 *  -> REVIEW matches() METHOD
-			 *  -> THINK IF ITS NECESSARY TO HAVE changeFilepath()
-			 *  -> checkar o size 
-			 */
 
 /**
  * This class lets the user create and manipulate objects of the type Photo using its
@@ -42,7 +35,7 @@ public class Photo implements IPhoto, RegExpMatchable {
     Photo(String title, LocalDateTime dateAddedLib, PhotoMetadata metadata, File pathToFile) {
 		this.pathToFile = pathToFile;
 		this.metadata = metadata;
-		this.size = pathToFile.getTotalSpace();
+		this.size = pathToFile.length();
 		this.title = title;
 		this.dateAddedLib = dateAddedLib;
 		// isFavourite has a default value of 'false'

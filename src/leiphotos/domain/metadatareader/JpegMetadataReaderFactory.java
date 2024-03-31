@@ -19,7 +19,7 @@ public enum JpegMetadataReaderFactory {
      * @throws JpegMetadataException If an error occurs while reading metadata.
      * @throws FileNotFoundException If the specified file is not found.
      */
-    JpegMetadataReader createMetadataReader(File file) throws 
+    public JpegMetadataReader createMetadataReader(File file) throws 
     JpegMetadataException,FileNotFoundException {
 
         return new JavaXTMetadataReaderAdapter(file);

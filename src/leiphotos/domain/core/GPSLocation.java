@@ -1,13 +1,6 @@
 package leiphotos.domain.core;
-
 import leiphotos.domain.facade.GPSCoordinates;
 import leiphotos.utils.RegExpMatchable;
-
-			/**
-			 *  TODO := THIS FILE
-			 *  -> REVIEW matches() method
-             *  -> THINK IF ITS NECESSARY TO ADD MORE METHODS, LIKE SETTERS, PROBABLY NOT WISE TO DO IT
-			 */
 
 /**
  * This record represents an GPSLocation where each object has a set of coordinates

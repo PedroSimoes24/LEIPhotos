@@ -1,14 +1,7 @@
 package leiphotos.domain.core;
-
-import java.time.LocalDateTime;
 import leiphotos.utils.RegExpMatchable;
 
-			/**
-			 *  TODO := THIS FILE
-			 *  -> REVIEW THE matches() method
-			 *  -> REVIEW IF MORE METHODS ARE NEEDED
-			 *  -> REVIEW IF ITS WELL IMPLEMENTED GIVEN THE RECORD SYNTAX
-			 */
+import java.time.LocalDateTime;
 
 /**
  * This record stores relevant information of an photo, which is also known as metadata, and lets
@@ -18,7 +11,7 @@ import leiphotos.utils.RegExpMatchable;
 public record PhotoMetadata(String camara, String manufacterer, 
 							LocalDateTime date, GPSLocation location) implements RegExpMatchable{
 	
-	@Override
+	@Override // checkar
 	public boolean matches(String regexp) {
 		return camara.matches(regexp) && manufacterer.matches(regexp) &&
 			   location.matches(regexp);
