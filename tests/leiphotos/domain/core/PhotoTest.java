@@ -29,6 +29,8 @@ class PhotoTest {
 		assertEquals(expectedTitle, photo.title());
 		assertEquals(expectedFile, photo.file());
 
+		assertEquals(false, photo.getPlace().isPresent());
+
 	}
 
 	@Test
@@ -45,12 +47,8 @@ class PhotoTest {
 
 		Photo photo = new Photo(expectedTitle, expectedAddedDate, 
 								new PhotoMetadata("", "", expectedCapturedDate, location), expectedFile);
-		
-		assertEquals(expectedAddedDate, photo.addedDate());
-		assertEquals(expectedCapturedDate, photo.capturedDate());
-		assertEquals(expectedTitle, photo.title());
-		assertEquals(expectedFile, photo.file());
 
+		assertEquals(true, photo.getPlace().isPresent());
 		GPSCoordinates locationRetrieved = photo.getPlace().get();
 
 		assertEquals(expectedLongitude, locationRetrieved.longitude());
