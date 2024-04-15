@@ -33,30 +33,18 @@ public enum PhotoFactory {
 
 	Photo createPhoto(String title, String pathToPhotoFile) throws java.io.FileNotFoundException {
 	
-		File photo = new File(pathToPhotoFile);
-		
-		if (!photo.exists()) {
-			throw new FileNotFoundException();
+		File path = new File(pathToPhotoFile);
+		PhotoMetadata metadata;
+
+		try {
+			JpegMetadataReader reader = JpegMetadataReaderFactory.INSTANCE.createMetadataReader(path);
+			double[] coordinates = reader.getGpsLocation();
+			metadata = new PhotoMetadata(reader.getCamera(), reader.getManufacturer(), 
+										 reader.getDate(), new GPSLocation(coordinates[0], coordinates[1], ""));
+		} catch (JpegMetadataException e) {
+			metadata = null;
 		}
 
-		// The date added to library is set to null because the photo being created doesn't imply that it was
-		// added to the library. When the photo is eventually added to the library the photo class has an 
-		// setAddedDate(LocalDateTime) method to set the date that the photo was added.
-		return new Photo(title, null, extractMetadata(photo), photo);
-	}
-
-	/**
-	 * This method returns an object of the type PhotoMetadata of the given
-	 * photo {@code image}
-	 * 
-	 * @param image file path of the image
-	 * @return an PhotoMetadata object referent to the photo referenced by the filepath {@code image}
-	 */
-
-	private PhotoMetadata extractMetadata(File image) {
-		JpegMetadataReader reader = JpegMetadataReaderFactory.INSTANCE.createMetadataReader(image);
-		double[] coordinates = reader.getGpsLocation();
-		return new PhotoMetadata(reader.getCamera(), reader.getManufacturer(), 
-								 reader.getDate(), new GPSLocation(coordinates[0], coordinates[1], ""));
+		return new Photo(title, LocalDateTime.now(), metadata, path);
 	}
 }
