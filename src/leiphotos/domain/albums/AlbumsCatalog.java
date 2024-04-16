@@ -9,12 +9,19 @@ import java.util.Set;
 import leiphotos.domain.core.MainLibrary;
 import leiphotos.domain.facade.IPhoto;
 
-
+/**
+ * Class representing a catalog of albums in the photo library system.
+ */
 public class AlbumsCatalog implements IAlbumsCatalog {
 
-	Map<String, IAlbum> catalog; 
-	MainLibrary mainLib;
+	private Map<String, IAlbum> catalog; 
+	private MainLibrary mainLib;
 
+	/**
+	 * Constructor for an album catalog in the given library.
+	 *
+	 * @param mainLib Library of the album catalog.
+	 */
 	public AlbumsCatalog(MainLibrary mainLib) {
 
 		this.mainLib = mainLib;
