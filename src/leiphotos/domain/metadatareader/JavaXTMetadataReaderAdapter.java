@@ -8,8 +8,11 @@ import leiphotos.services.JavaXTJpegMetadataReader;
 
 public class JavaXTMetadataReaderAdapter implements JpegMetadataReader {
 
-    private JavaXTJpegMetadataReader dataReader;
-
+    private String camera;
+    private String manufacturer;
+    private LocalDateTime date;
+    private String aperture;
+    private double[] gpsLocation;
 
     /**
      * Constructor for JavaXTMetadataReaderAdapter object
@@ -17,7 +20,16 @@ public class JavaXTMetadataReaderAdapter implements JpegMetadataReader {
      * @param file path of jpeg file 
      */
     public JavaXTMetadataReaderAdapter(File file) {
-        dataReader = new JavaXTJpegMetadataReader(file);
+        JavaXTJpegMetadataReader dr = new JavaXTJpegMetadataReader(file);
+
+        camera = dr.getCamara() != null ? dr.getCamara() : "No camera data";
+        manufacturer = dr.getManufacturer() != null ? dr.getManufacturer() : "No manufacturer data";
+        aperture = dr.getAperture() != null ? dr.getAperture() : "No aperture data";
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm");
+        date = LocalDateTime.parse(dr.getDate(), formatter);
+
+        gpsLocation = dr.getGPS();
     }
 
     /**
@@ -27,7 +39,7 @@ public class JavaXTMetadataReaderAdapter implements JpegMetadataReader {
      */
     @Override
     public String getCamera() {
-        return dataReader.getCamara();
+        return camera;
     }
 
     /**
@@ -37,7 +49,7 @@ public class JavaXTMetadataReaderAdapter implements JpegMetadataReader {
      */
     @Override
     public String getManufacturer() {
-        return dataReader.getManufacturer();
+        return manufacturer;
     }
 
     /**
@@ -47,10 +59,7 @@ public class JavaXTMetadataReaderAdapter implements JpegMetadataReader {
      */
     @Override
     public LocalDateTime getDate() {
-        //por verificar se a formatação vem correta da classe do objeto anterior
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm:ss");
-        return LocalDateTime.parse(dataReader.getDate(), formatter);
+        return date;
     }
 
     /**
@@ -60,7 +69,7 @@ public class JavaXTMetadataReaderAdapter implements JpegMetadataReader {
      */
     @Override
     public String getAperture() {
-        return dataReader.getAperture();
+        return aperture;
     }
 
     /**
@@ -73,7 +82,7 @@ public class JavaXTMetadataReaderAdapter implements JpegMetadataReader {
      */
     @Override
     public double[] getGpsLocation()  {
-        return dataReader.getGPS();
+        return gpsLocation;
     }
     
 }
