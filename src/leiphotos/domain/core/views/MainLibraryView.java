@@ -1,9 +1,7 @@
 package leiphotos.domain.core.views;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
-import leiphotos.domain.core.Library;
 import leiphotos.domain.core.LibraryEvent;
 import leiphotos.domain.core.MainLibrary;
 import leiphotos.domain.core.PhotoAddedLibraryEvent;
@@ -23,26 +21,23 @@ public class MainLibraryView extends ALibraryView implements Listener<LibraryEve
 
     @Override
     public void processEvent(LibraryEvent e) {
-
         // verificar que o evento é relativo à library atual
         if (e.getLibrary() != lib) { return; }
 
-        if (e instanceof PhotoAddedLibraryEvent) {
+        if (e instanceof PhotoAddedLibraryEvent && condition.test(e.getPhoto())) {
             cache.add(e.getPhoto());
         }
-        else if (e instanceof PhotoDeletedLibraryEvent) {
+        else if (e instanceof PhotoDeletedLibraryEvent && cache.contains(e.getPhoto())) {
             cache.remove(e.getPhoto());
         }
-        else { // e instanceof PhotoChangedLibraryEvent
-            IPhoto temp; int i = 0;
-            do {
-                temp = cache.get(i);
-                i++;
-            } while (!temp.file().equals(e.getPhoto().file()));
+        else if (e instanceof PhotoChangedLibraryEvent && cache.contains(e.getPhoto())) { // e instanceof PhotoChangedLibraryEvent
+            if (condition.test(e.getPhoto())) { // se a foto depois de alterada continua a pertencer à library
+                cache.add(e.getPhoto());
+            }
+            else {
+                cache.remove(e.getPhoto());
+            }
         }
     }
-    
 
-
-    
 }
