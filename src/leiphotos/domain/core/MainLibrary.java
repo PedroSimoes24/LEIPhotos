@@ -28,7 +28,7 @@ public class MainLibrary extends AbsSubject<LibraryEvent> implements Library {
             return false;
         }
         photos.add(photo);
-        // falta emitir evento
+        emitEvent(new PhotoAddedLibraryEvent(photo, this));
         numPhotos++;
         return true;
     }
@@ -39,7 +39,7 @@ public class MainLibrary extends AbsSubject<LibraryEvent> implements Library {
             return false;
         }
         photos.remove(photo);
-        // falta emitir evento
+        emitEvent(new PhotoDeletedLibraryEvent(photo, this));
         numPhotos--;
         return true;
     }

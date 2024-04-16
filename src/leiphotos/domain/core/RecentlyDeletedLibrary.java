@@ -1,47 +1,32 @@
 package leiphotos.domain.core;
 
-import java.util.Collection;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 import leiphotos.domain.facade.IPhoto;
 
-//Class automatically generated so the code compiles
-//CHANGE ME
-public class RecentlyDeletedLibrary implements Library, TrashLibrary{
+public class RecentlyDeletedLibrary extends ATrashLibrary {
+
+	private static final int TIME_TO_CLEAN = 15;
 
 	@Override
-	public int getNumberOfPhotos() {
-		// TODO Auto-generated method stub
-		return 0;
+	protected void clean() {
+		photos = photos.stream().filter(this::canClean).toList();
+	}
+	
+	/*
+	 * This method checks if any IPhoto of the library can be cleaned,
+	 * therefore if it has been in this library for more than 15 seconds.
+	 * 
+	 * @return true if it can clean at least one of IPhotos, false otherwise
+	 */
+
+	private boolean canClean(IPhoto photo) {
+		return Duration.between(photo.addedDate(), LocalDateTime.now()).getSeconds() > TIME_TO_CLEAN;
 	}
 
 	@Override
-	public boolean addPhoto(IPhoto photo) {
-		// TODO Auto-generated method stub
-		return false;
+	protected boolean cleaningTime() {
+		return photos.stream().anyMatch(this::canClean);
 	}
-
-	@Override
-	public boolean deletePhoto(IPhoto photo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Collection<IPhoto> getPhotos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Collection<IPhoto> getMatches(String regexp) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean deleteAll() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

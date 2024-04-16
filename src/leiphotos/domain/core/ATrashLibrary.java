@@ -8,8 +8,8 @@ import leiphotos.domain.facade.IPhoto;
 
 public abstract class ATrashLibrary implements TrashLibrary {
 
-    private Collection<IPhoto> photos;
-    private int numPhotos;
+    protected Collection<IPhoto> photos;
+    protected int numPhotos;
 
     protected ATrashLibrary() {
         photos = new LinkedList<>();
@@ -53,7 +53,6 @@ public abstract class ATrashLibrary implements TrashLibrary {
             return false;
         }
         photos.remove(photo);
-        // falta emitir evento
         numPhotos--;
         return true;
     }

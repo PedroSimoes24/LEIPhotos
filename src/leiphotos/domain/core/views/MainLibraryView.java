@@ -26,9 +26,6 @@ public class MainLibraryView extends ALibraryView implements Listener<LibraryEve
             return;
         }
 
-        
-
-
         throw new UnsupportedOperationException("Unimplemented method 'processEvent'");
     }
     
