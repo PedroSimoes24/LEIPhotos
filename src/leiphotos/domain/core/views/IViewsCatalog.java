@@ -12,5 +12,4 @@ public interface IViewsCatalog {
 
     ILibraryView getView(ViewsType t);    
 
-
 }
