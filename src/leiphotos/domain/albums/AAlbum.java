@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Set;
 
 import leiphotos.domain.core.LibraryEvent;
+import leiphotos.domain.core.PhotoDeletedLibraryEvent;
 import leiphotos.domain.facade.IPhoto;
 
 public abstract class AAlbum implements IAlbum{
 
     String name;
-
     List<IPhoto> photos;
 
     protected AAlbum (String name) {
@@ -68,6 +68,12 @@ public abstract class AAlbum implements IAlbum{
     @Override
     public void processEvent(LibraryEvent e) {
         
+        IPhoto p = e.getPhoto();
+
+        if (e instanceof PhotoDeletedLibraryEvent && photos.contains(p)) {
+                photos.remove(p);
+        }
+
     }
     
 }
