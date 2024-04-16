@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 
 import leiphotos.domain.core.LibraryEvent;
-import leiphotos.domain.core.PhotoChangedLibraryEvent;
 import leiphotos.domain.core.PhotoDeletedLibraryEvent;
 import leiphotos.domain.facade.IPhoto;
 
@@ -74,5 +73,6 @@ public abstract class AAlbum implements IAlbum{
         if (e instanceof PhotoDeletedLibraryEvent && photos.contains(p)) {
             photos.remove(p);
         }
+    }
     
 }

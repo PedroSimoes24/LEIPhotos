@@ -15,62 +15,62 @@ import leiphotos.domain.facade.IPhoto;
 
 public class AlbumsController implements IAlbumsController {
 
+	private IAlbumsCatalog catalog;
+	private String selected;
+
 	public AlbumsController(IAlbumsCatalog albumsCatalog) {
-		// TODO Auto-generated constructor stub
+		
+		this.catalog = albumsCatalog;
+		this.selected = null;
 	}
 
 	@Override
 	public boolean createAlbum(String name) {
-		// TODO Auto-generated method stub
-		return false;
+		return catalog.createAlbum(name);
 	}
 
 	@Override
 	public void removeAlbum() {
-		// TODO Auto-generated method stub
-
+		selected = null;
 	}
 
 	@Override
 	public void selectAlbum(String name) {
-		// TODO Auto-generated method stub
-
+		selected = catalog.containsAlbum(name) ? name : null;
 	}
 
 	@Override
 	public void addPhotos(Set<IPhoto> selectedPhotos) {
-		// TODO Auto-generated method stub
 
+		if (catalog.containsAlbum(selected)) 
+			catalog.addPhotos(selected, selectedPhotos);
 	}
 
 	@Override
 	public void removePhotos(Set<IPhoto> selectedPhotos) {
-		// TODO Auto-generated method stub
 
+		if (catalog.containsAlbum(selected))
+			catalog.removePhotos(selected, selectedPhotos);
 	}
 
 	@Override
 	public List<IPhoto> getPhotos() {
-		// TODO Auto-generated method stub
-		return null;
+		return catalog.getPhotos(selected);
 	}
 
 	@Override
 	public Optional<String> getSelectedAlbum() {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		return Optional.ofNullable(selected);
 	}
 
 	@Override
 	public boolean createSmartAlbum(String name, Predicate<IPhoto> criteria) {
-		// TODO Auto-generated method stub
-		return false;
+		throw new UnsupportedOperationException("Método pertence à segunda iteração do projeto");
 	}
 
 	@Override
 	public Set<String> getAlbumNames() {
-		// TODO Auto-generated method stub
-		return null;
+		return catalog.getAlbumsNames();
 	}
 
 }

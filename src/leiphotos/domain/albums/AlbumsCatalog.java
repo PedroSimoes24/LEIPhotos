@@ -1,5 +1,6 @@
 package leiphotos.domain.albums;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +43,7 @@ public class AlbumsCatalog implements IAlbumsCatalog {
 		boolean removed = false;
 
 		if (containsAlbum(albumName)) {
+			mainLib.unregisterListener(catalog.get(albumName));
 			catalog.remove(albumName);
 			removed = true;
 		}
@@ -82,7 +84,10 @@ public class AlbumsCatalog implements IAlbumsCatalog {
 
 	@Override
 	public List<IPhoto> getPhotos(String albumName) {
-		return catalog.get(albumName).getPhotos();
+
+		return catalog.containsKey(albumName) ? 
+			   catalog.get(albumName).getPhotos() :
+			   new ArrayList<>();
 	}
 
 	@Override
