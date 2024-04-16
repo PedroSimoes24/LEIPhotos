@@ -29,6 +29,7 @@ public class AlbumsCatalog implements IAlbumsCatalog {
 
 			IAlbum a = new Album(albumName);
 			catalog.put(albumName, a);
+			mainLib.registerListener(a);
 			added = true;
 		}
 
