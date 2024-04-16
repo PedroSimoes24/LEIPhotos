@@ -8,10 +8,13 @@ import leiphotos.domain.facade.IPhoto;
 public class RecentlyDeletedLibrary extends ATrashLibrary {
 
 	private static final int TIME_TO_CLEAN = 15;
+	// private static LocalDateTime lastClean;
 
 	@Override
 	protected void clean() {
 		photos = photos.stream().filter(this::canClean).toList();
+		// photos = new LinkedList<>();
+		// lastClean = LocalDateTime.now();
 	}
 	
 	/*
@@ -23,10 +26,12 @@ public class RecentlyDeletedLibrary extends ATrashLibrary {
 
 	private boolean canClean(IPhoto photo) {
 		return Duration.between(photo.addedDate(), LocalDateTime.now()).getSeconds() > TIME_TO_CLEAN;
+		// return Duration.between(p)
 	}
 
 	@Override
 	protected boolean cleaningTime() {
 		return photos.stream().anyMatch(this::canClean);
+		// return Duration.between(lastClean, LocalDateTime.now()) > TIME_TO_CLEAN;
 	}
 }
