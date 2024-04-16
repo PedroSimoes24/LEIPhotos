@@ -7,8 +7,9 @@ import leiphotos.domain.facade.IPhoto;
 
 public class TrashLibraryView extends ALibraryView {
 
+    
+
     public TrashLibraryView(TrashLibrary lib, Predicate<IPhoto> condition) {
-        //TODO
         super(lib, condition);
     }
     

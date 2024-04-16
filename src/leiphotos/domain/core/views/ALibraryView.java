@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-
 import leiphotos.domain.core.Library;
 import leiphotos.domain.facade.IPhoto;
 
