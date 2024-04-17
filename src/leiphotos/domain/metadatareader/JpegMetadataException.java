@@ -9,7 +9,7 @@ public class JpegMetadataException extends RuntimeException {
     /**
      * Constructs a new JpegMetadataException with the default detail message.
      */
-    public JpegMetadataException() {
-        super("Unable to load metadata resource");
+    public JpegMetadataException(String errMsg) {
+        super(errMsg);
     }
 }
