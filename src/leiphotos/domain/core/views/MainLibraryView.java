@@ -14,19 +14,31 @@ public class MainLibraryView extends ALibraryView implements Listener<LibraryEve
 
     private List<IPhoto> cache;
 
-    public MainLibraryView(MainLibrary lib, Predicate<IPhoto> p) {
-        super(lib, p);
+    public MainLibraryView(MainLibrary mainLib, Predicate<IPhoto> p) {
+        super(mainLib, p);
         cache = getPhotos();
+        mainLib.registerListener(this);
+    }
+
+    @Override
+    public List<IPhoto> getPhotos() {
+        return cache;
+    }
+
+    @Override
+    public List<IPhoto> getMatches(String regexp) {
+        return cache.stream().filter(p -> p.matches(regexp)).toList();
     }
 
     @Override
     public void processEvent(LibraryEvent e) {
-
+        
         // verificar que o evento é relativo à library atual
         if (e.getLibrary() != lib) { return; }
 
         if (e instanceof PhotoAddedLibraryEvent && condition.test(e.getPhoto())) {
             cache.add(e.getPhoto());
+            cache.sort(criteria);
         }
         else if (e instanceof PhotoDeletedLibraryEvent && cache.contains(e.getPhoto())) {
             cache.remove(e.getPhoto());

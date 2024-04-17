@@ -31,7 +31,7 @@ public enum PhotoFactory {
 	 * @throws java.io.FileNotFoundException when the file doesnt exist
 	 */
 
-	Photo createPhoto(String title, String pathToPhotoFile) throws java.io.FileNotFoundException {
+	public Photo createPhoto(String title, String pathToPhotoFile) throws java.io.FileNotFoundException {
 	
 		File path = new File(pathToPhotoFile);
 		PhotoMetadata metadata;

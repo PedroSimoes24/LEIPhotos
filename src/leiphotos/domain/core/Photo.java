@@ -63,7 +63,7 @@ public class Photo implements IPhoto, RegExpMatchable {
 
 	@Override
 	public void toggleFavourite() {
-		isFavourite = true;
+		isFavourite = !isFavourite;
 	}
 
 	@Override
@@ -79,16 +79,6 @@ public class Photo implements IPhoto, RegExpMatchable {
 	@Override
 	public File file() {
 		return pathToFile;
-	}
-
-	/**
-	 * Untoggles this photo as favourite
-	 * 
-	 * @ensures !isFavourite()
-	 */
-
-	public void untoggleFavourite() {
-		isFavourite = false;
 	}
 
 	/**
@@ -116,7 +106,7 @@ public class Photo implements IPhoto, RegExpMatchable {
 
 	@Override 
 	public boolean matches(String regexp) {
-		return title.matches(regexp) && metadata.matches(regexp);
+		return title.matches(regexp) || metadata.matches(regexp);
 	}
 
 }
