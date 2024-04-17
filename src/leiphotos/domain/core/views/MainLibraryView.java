@@ -22,6 +22,7 @@ public class MainLibraryView extends ALibraryView implements Listener<LibraryEve
 
     @Override
     public List<IPhoto> getPhotos() {
+        cache.sort(criteria);
         return cache;
     }
 
@@ -38,7 +39,6 @@ public class MainLibraryView extends ALibraryView implements Listener<LibraryEve
 
         if (e instanceof PhotoAddedLibraryEvent && condition.test(e.getPhoto())) {
             cache.add(e.getPhoto());
-            cache.sort(criteria);
         }
         else if (e instanceof PhotoDeletedLibraryEvent && cache.contains(e.getPhoto())) {
             cache.remove(e.getPhoto());

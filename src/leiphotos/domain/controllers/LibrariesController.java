@@ -25,7 +25,11 @@ public class LibrariesController implements ILibrariesController {
 	@Override
 	public Optional<IPhoto> importPhoto(String title, String pathToPhotoFile) {
 		try {
-			return Optional.of(PhotoFactory.INSTANCE.createPhoto(title, pathToPhotoFile));
+			IPhoto newPhoto = PhotoFactory.INSTANCE.createPhoto(title, pathToPhotoFile);
+			if (mainLib.addPhoto(newPhoto)) 
+				return Optional.of(newPhoto);
+			else 
+				throw new Exception();
 		}
 		catch (Exception e) {
 			return Optional.empty();
@@ -36,7 +40,6 @@ public class LibrariesController implements ILibrariesController {
 	public void deletePhotos(Set<IPhoto> selectedPhotos) {
 		for (IPhoto photo : selectedPhotos) {
 			mainLib.deletePhoto(photo);
-			//mainLib.emitEvent(new PhotoDeletedLibraryEvent(photo, mainLib));
 			trashLib.addPhoto(photo);
 		}
 
@@ -52,7 +55,6 @@ public class LibrariesController implements ILibrariesController {
 		for (IPhoto photo : selectedPhotos) {
 			if (mainLib.getPhotos().contains(photo)) {
 				photo.toggleFavourite();
-				//mainLib.emitEvent(new PhotoChangedLibraryEvent(photo, mainLib));
 			}
 		}
 
