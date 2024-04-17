@@ -8,9 +8,7 @@ import leiphotos.domain.facade.IPhoto;
 public class TrashLibraryView extends ALibraryView {
 
     public TrashLibraryView(TrashLibrary trashLib) {
-        super(trashLib, null);
-        // qual e a condicao do predicado no trashlibraryviw
-        
+        super(trashLib);     
     }
 
 }
