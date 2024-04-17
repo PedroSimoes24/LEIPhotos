@@ -68,7 +68,7 @@ public class Photo implements IPhoto, RegExpMatchable {
 
 	@Override
 	public Optional<? extends GPSCoordinates> getPlace() {
-		return Optional.of(metadata.location());
+		return Optional.ofNullable(metadata.location());
 	}
 
 	@Override
