@@ -36,13 +36,15 @@ public enum PhotoFactory {
 		File path = new File(pathToPhotoFile);
 		PhotoMetadata metadata;
 
+
 		try {
 			JpegMetadataReader reader = JpegMetadataReaderFactory.INSTANCE.createMetadataReader(path);
 			double[] coordinates = reader.getGpsLocation();
 			metadata = new PhotoMetadata(reader.getCamera(), reader.getManufacturer(), 
 										 reader.getDate(), new GPSLocation(coordinates[0], coordinates[1], ""));
 		} catch (JpegMetadataException e) {
-			metadata = null;
+			metadata = new PhotoMetadata("No camera data", "No manufacturer data",
+										LocalDateTime.MIN, null);
 		}
 
 		return new Photo(title, LocalDateTime.now(), metadata, path);

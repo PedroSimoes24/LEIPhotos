@@ -24,23 +24,23 @@ public enum JpegMetadataReaderFactory {
     JpegMetadataException,FileNotFoundException {
 
         if (file == null) 
-            throw new FileNotFoundException();
+            throw new FileNotFoundException("File is null");
         
         if (!file.exists())
-            throw new FileNotFoundException();
+            throw new FileNotFoundException("File does not exist");
         
         if (!file.isFile())
-            throw new JpegMetadataException();
+            throw new FileNotFoundException("Given path represents a directory");
         
         if (!isImageFile(file))
-            throw new JpegMetadataException();
+            throw new JpegMetadataException("Not a .jpeg file");
 
         return new JavaXTMetadataReaderAdapter(file);
     }
 
     private boolean isImageFile(File file) {
         
-        String regex = "(?i)\\.(jpeg|jpg|gif|png|tiff|tif|bmp|svg)";
+        String regex = "(?i)\\.(jpeg|jpg)";
         return Pattern.matches(regex, file.getName()); 
     }
 

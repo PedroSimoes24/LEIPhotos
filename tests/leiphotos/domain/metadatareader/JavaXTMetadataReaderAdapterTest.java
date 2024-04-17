@@ -59,8 +59,8 @@ public class JavaXTMetadataReaderAdapterTest {
 
         Assert.assertEquals("SONY", dr1.getManufacturer());
         Assert.assertEquals("Apple", dr2.getManufacturer());
-        Assert.assertEquals("SONY", dr3.getManufacturer() );
-        Assert.assertEquals("Apple", dr4.getManufacturer() );
+        Assert.assertEquals("SONY", dr3.getManufacturer());
+        Assert.assertEquals("Apple", dr4.getManufacturer());
     }
 
     @Test
@@ -68,15 +68,15 @@ public class JavaXTMetadataReaderAdapterTest {
 
         setUp();
 
-        LocalDateTime dt1 = LocalDateTime.of(2023, 7, 31, 13, 49, 46);
-        //LocalDateTime dt2 = LocalDateTime.of(2024, 2, 12, 9, 50, 50);
-        LocalDateTime dt3 = LocalDateTime.of(2015, 8, 12, 1, 44, 56);
-        LocalDateTime dt4 = LocalDateTime.of(2022, 5, 1, 11, 5, 16);
+        LocalDateTime dt1 = LocalDateTime.of(2023, 7, 31, 13, 49);
+        LocalDateTime dt2 = LocalDateTime.of(2024, 2, 12, 9, 50);
+        LocalDateTime dt3 = LocalDateTime.of(2015, 8, 12, 1, 44);
+        LocalDateTime dt4 = LocalDateTime.of(2022, 5, 1, 11, 5);
         
 
         Assert.assertEquals(dt1, dr1.getDate());
 
-        //Assert.assertEquals(dt2, dr2.getDate());
+        Assert.assertEquals(dt2, dr2.getDate());
 
         Assert.assertEquals(dt3, dr3.getDate());                
         Assert.assertEquals(dt4, dr4.getDate()); 
