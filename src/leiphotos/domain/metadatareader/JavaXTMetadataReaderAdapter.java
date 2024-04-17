@@ -26,7 +26,7 @@ public class JavaXTMetadataReaderAdapter implements JpegMetadataReader {
         manufacturer = dr.getManufacturer() != null ? dr.getManufacturer() : "No manufacturer data";
         aperture = dr.getAperture() != null ? dr.getAperture() : "No aperture data";
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm:ss");
         date = LocalDateTime.parse(dr.getDate(), formatter);
 
         gpsLocation = dr.getGPS();
