@@ -21,14 +21,12 @@ public class JavaXTMetadataReaderAdapter implements JpegMetadataReader {
      */
     public JavaXTMetadataReaderAdapter(File file) {
         JavaXTJpegMetadataReader dr = new JavaXTJpegMetadataReader(file);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm:ss");
 
         camera = dr.getCamara() != null ? dr.getCamara() : "No camera data";
         manufacturer = dr.getManufacturer() != null ? dr.getManufacturer() : "No manufacturer data";
         aperture = dr.getAperture() != null ? dr.getAperture() : "No aperture data";
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm:ss");
-        date = LocalDateTime.parse(dr.getDate(), formatter);
-
+        date = dr.getDate() != null ? LocalDateTime.parse(dr.getDate(), formatter).withSecond(0) : LocalDateTime.MIN;
         gpsLocation = dr.getGPS();
     }
 
