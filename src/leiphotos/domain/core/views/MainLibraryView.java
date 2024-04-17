@@ -21,6 +21,7 @@ public class MainLibraryView extends ALibraryView implements Listener<LibraryEve
 
     @Override
     public void processEvent(LibraryEvent e) {
+
         // verificar que o evento é relativo à library atual
         if (e.getLibrary() != lib) { return; }
 
@@ -34,7 +35,7 @@ public class MainLibraryView extends ALibraryView implements Listener<LibraryEve
             if (condition.test(e.getPhoto())) { // se a foto depois de alterada continua a pertencer à library
                 cache.add(e.getPhoto());
             }
-            else {
+            else { // se a foto depois de alterada deixa de pertencer à library
                 cache.remove(e.getPhoto());
             }
         }
