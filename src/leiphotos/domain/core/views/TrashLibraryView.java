@@ -1,7 +1,6 @@
 package leiphotos.domain.core.views;
 
 import java.util.function.Predicate;
-
 import leiphotos.domain.core.TrashLibrary;
 import leiphotos.domain.facade.IPhoto;
 

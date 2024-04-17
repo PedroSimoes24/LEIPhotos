@@ -8,31 +8,27 @@ import leiphotos.domain.facade.IPhoto;
 import leiphotos.domain.facade.IViewsController;
 import leiphotos.domain.facade.ViewsType;
 
-
-//Class automatically generated so the code compiles
-//CHANGE ME
 public class ViewsController implements IViewsController {
 
+	private IViewsCatalog views;
+
 	public ViewsController(IViewsCatalog views) {
-		// TODO Auto-generated constructor stub
+		this.views = views;
 	}
 
 	@Override
 	public List<IPhoto> getPhotos(ViewsType viewType) {
-		// TODO Auto-generated method stub
-		return null;
+		return views.getView(viewType).getPhotos();
 	}
 
 	@Override
 	public List<IPhoto> getMatches(ViewsType viewType, String regexp) {
-		// TODO Auto-generated method stub
-		return null;
+		return views.getView(viewType).getMatches(regexp);
 	}
 
 	@Override
 	public void setSortingCriteria(ViewsType v, Comparator<IPhoto> criteria) {
-		// TODO Auto-generated method stub
-
+		views.getView(v).setComparator(criteria);
 	}
 
 }
