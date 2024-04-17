@@ -109,4 +109,10 @@ public class Photo implements IPhoto, RegExpMatchable {
 		return title.matches(regexp) || metadata.matches(regexp);
 	}
 
+	public String toString() {
+		return "File:" + pathToFile.toString() + "\n" +
+				"Title:" + title + " Added:" + dateAddedLib.toString() + " Size:" + size +
+				"\n" + metadata.toString();
+	}
+
 }

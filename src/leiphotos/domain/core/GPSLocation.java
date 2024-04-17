@@ -23,5 +23,8 @@ public record GPSLocation(double longitude, double latitude, String description)
     public boolean matches(String regexp) {
         return description.matches(regexp); 
     }
-    
+
+    public String toString() {
+        return "Lat:" + latitude + " , Long:" + longitude + ", Desc:" + description;
+    }
 }

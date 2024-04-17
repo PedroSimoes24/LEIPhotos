@@ -16,5 +16,9 @@ public record PhotoMetadata(String camara, String manufacterer,
 		return camara.matches(regexp) || manufacterer.matches(regexp) || 
 		(location != null ? location.matches(regexp) : true);
 	}
-    
+
+	public String toString() {
+		return "[" + (location == null ? location.toString() : "") + ", " + camara + ", " + manufacterer + "]";
+	}
+
 }
