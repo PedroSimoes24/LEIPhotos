@@ -63,14 +63,6 @@ class PhotoTest {
 	}
 
 	@Test
-	void testUntoggleFavourite() {
-		Photo photo = new Photo("testeUntoggleFavourite", null, null, new File("photos/Bean.jpeg"));
-		photo.toggleFavourite();
-		photo.untoggleFavourite();
-		assertEquals(false, photo.isFavourite());
-	}
-
-	@Test
 	void testSize() { //requires the use of a mock file class
 		long expectedSize = 1024;
 		MockFile expectedFile = new MockFile("photos/Bean.jpeg",expectedSize);

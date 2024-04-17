@@ -1,5 +1,6 @@
 package leiphotos.domain.core.views;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 import leiphotos.domain.core.LibraryEvent;
@@ -16,7 +17,8 @@ public class MainLibraryView extends ALibraryView implements Listener<LibraryEve
 
     public MainLibraryView(MainLibrary mainLib, Predicate<IPhoto> p) {
         super(mainLib, p);
-        cache = getPhotos();
+        cache = new LinkedList<>();
+        cache.addAll(getPhotos());
         mainLib.registerListener(this);
     }
 
