@@ -13,7 +13,7 @@ public record PhotoMetadata(String camara, String manufacterer,
 	
 	@Override // checkar
 	public boolean matches(String regexp) {
-		return camara.matches(regexp) && manufacterer.matches(regexp) &&
+		return camara.matches(regexp) || manufacterer.matches(regexp) ||
 			   location.matches(regexp);
 	}
     

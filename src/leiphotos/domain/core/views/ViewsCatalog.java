@@ -1,8 +1,6 @@
 package leiphotos.domain.core.views;
 
-import java.time.LocalDate;
-import java.util.Comparator;
-
+import java.time.LocalDateTime;
 import leiphotos.domain.core.MainLibrary;
 import leiphotos.domain.core.TrashLibrary;
 import leiphotos.domain.facade.IPhoto;
@@ -16,11 +14,10 @@ public class ViewsCatalog implements IViewsCatalog {
 	private MainLibraryView mostRecentLibView;
 
 	public ViewsCatalog(MainLibrary mainLib, TrashLibrary trashLib) {
-		mainLibView = new MainLibraryView(mainLib, p -> true);
-		trashLibView = new TrashLibraryView(trashLib);
-		favouriteLibView = new MainLibraryView(mainLib, p -> p.isFavourite());
-		mostRecentLibView = new MainLibraryView(mainLib, p -> true);
-		mostRecentLibView.setComparator((p1,p2) -> p1.addedDate().compareTo(p2.addedDate()));
+		mainLibView = new MainLibraryView(mainLib, p -> true); // ou seja todas as fotos da main library estão na view
+		trashLibView = new TrashLibraryView(trashLib); 
+		favouriteLibView = new MainLibraryView(mainLib,IPhoto::isFavourite);
+		mostRecentLibView = new MainLibraryView(mainLib, p -> LocalDateTime.now().getYear() - p.addedDate().getYear() >= 1);
 	}
 
 	@Override

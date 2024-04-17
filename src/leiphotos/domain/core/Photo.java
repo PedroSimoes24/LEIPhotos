@@ -116,7 +116,7 @@ public class Photo implements IPhoto, RegExpMatchable {
 
 	@Override 
 	public boolean matches(String regexp) {
-		return title.matches(regexp) && metadata.matches(regexp);
+		return title.matches(regexp) || metadata.matches(regexp);
 	}
 
 }
