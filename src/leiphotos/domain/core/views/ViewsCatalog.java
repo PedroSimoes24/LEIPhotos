@@ -6,6 +6,10 @@ import leiphotos.domain.core.TrashLibrary;
 import leiphotos.domain.facade.IPhoto;
 import leiphotos.domain.facade.ViewsType;
 
+/*
+* This class lets the user create and manipulate objects of the type Views Catalog
+ */
+
 public class ViewsCatalog implements IViewsCatalog {
 
 	private MainLibraryView mainLibView;
@@ -13,8 +17,14 @@ public class ViewsCatalog implements IViewsCatalog {
 	private MainLibraryView favouriteLibView;
 	private MainLibraryView mostRecentLibView;
 
+	/*
+	* Constructor for the class ViewsCatalog
+	*
+	* @param mainLib the main library
+	* @param trashLib the trash library
+	 */
 	public ViewsCatalog(MainLibrary mainLib, TrashLibrary trashLib) {
-		mainLibView = new MainLibraryView(mainLib, p -> true); // ou seja todas as fotos da main library estão na view
+		mainLibView = new MainLibraryView(mainLib, p -> true); // therefore all photos of the mainlib
 		trashLibView = new TrashLibraryView(trashLib); 
 		favouriteLibView = new MainLibraryView(mainLib,IPhoto::isFavourite);
 		mostRecentLibView = new MainLibraryView(mainLib, p -> LocalDateTime.now().getYear() - p.addedDate().getYear() >= 1);
@@ -30,7 +40,4 @@ public class ViewsCatalog implements IViewsCatalog {
 			default : return null;
 		}
 	}
-
-	
-
 }

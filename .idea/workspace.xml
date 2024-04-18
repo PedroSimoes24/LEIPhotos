@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f78b051b-dc23-4b62-b82b-c4d2d2f165e5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/bin/javaxt/io/Image$MetadataParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/javaxt/io/Image$MetadataParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/client/SimpleClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/client/SimpleClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/domain/albums/AlbumsCatalog.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/domain/albums/AlbumsCatalog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/domain/controllers/LibrariesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/domain/controllers/LibrariesController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/domain/core/ATrashLibrary.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/domain/core/ATrashLibrary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/domain/core/GPSLocation.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/domain/core/GPSLocation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/domain/core/MainLibrary.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/domain/core/MainLibrary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/domain/core/MockPhoto.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/domain/core/MockPhoto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/domain/core/Photo.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/domain/core/Photo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/domain/core/PhotoFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/domain/core/PhotoFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/domain/core/PhotoMetadata.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/domain/core/PhotoMetadata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/domain/core/PhotoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/domain/core/PhotoTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/domain/core/RecentlyDeletedLibrary.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/domain/core/RecentlyDeletedLibrary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/domain/core/views/ViewsCatalog.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/domain/core/views/ViewsCatalog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/domain/metadatareader/JpegMetadataReaderFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/domain/metadatareader/JpegMetadataReaderFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/ui/UI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/ui/UI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/leiphotos/ui/UI.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/leiphotos/ui/UI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/albums/AAlbum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/albums/AAlbum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/albums/AlbumsCatalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/albums/AlbumsCatalog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/controllers/AlbumsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/controllers/AlbumsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/controllers/LibrariesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/controllers/LibrariesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/controllers/ViewsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/controllers/ViewsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/ATrashLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/ATrashLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/GPSLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/GPSLocation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/MainLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/MainLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/Photo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/Photo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/PhotoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/PhotoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/PhotoMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/PhotoMetadata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/RecentlyDeletedLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/RecentlyDeletedLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/views/ALibraryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/views/ALibraryView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/views/MainLibraryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/views/MainLibraryView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/views/TrashLibraryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/views/TrashLibraryView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/views/ViewsCatalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/views/ViewsCatalog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/metadatareader/JpegMetadataReaderFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/metadatareader/JpegMetadataReaderFactory.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.SimpleClient.executor": "Run",
+    "git-widget-placeholder": "master",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+</project>

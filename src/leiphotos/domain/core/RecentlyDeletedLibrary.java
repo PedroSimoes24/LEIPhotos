@@ -6,6 +6,11 @@ import java.util.LinkedList;
 
 import leiphotos.domain.facade.IPhoto;
 
+/*
+* This class consists lets the user create and manipulate objects of the type RecentlyDeletedLibrary, where
+* it represents a library where the photos are deleted after a certain time passes
+ */
+
 public class RecentlyDeletedLibrary extends ATrashLibrary {
 
 	private static final int TIME_TO_CLEAN = 15;

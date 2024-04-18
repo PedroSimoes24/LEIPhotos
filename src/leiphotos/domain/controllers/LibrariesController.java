@@ -12,11 +12,17 @@ import leiphotos.domain.core.TrashLibrary;
 import leiphotos.domain.facade.ILibrariesController;
 import leiphotos.domain.facade.IPhoto;
 
+/*
+* This class lets the user create and manipulate objects of the type LibrariesController
+ */
 public class LibrariesController implements ILibrariesController {
 
 	private MainLibrary mainLib;
 	private TrashLibrary trashLib;
 
+	/*
+	* Constructor for the class LibrariesController
+	 */
 	public LibrariesController(MainLibrary mainLib, TrashLibrary trashLib) {
 		this.mainLib = mainLib;
 		this.trashLib = trashLib;
@@ -54,10 +60,9 @@ public class LibrariesController implements ILibrariesController {
 	public void toggleFavourite(Set<IPhoto> selectedPhotos) {
 		for (IPhoto photo : selectedPhotos) {
 			if (mainLib.getPhotos().contains(photo)) {
-				photo.toggleFavourite();
+				mainLib.toggleFavourite(photo);
 			}
 		}
-
 	}
 
 	@Override

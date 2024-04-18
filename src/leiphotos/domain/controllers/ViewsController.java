@@ -8,10 +8,17 @@ import leiphotos.domain.facade.IPhoto;
 import leiphotos.domain.facade.IViewsController;
 import leiphotos.domain.facade.ViewsType;
 
+/*
+* This class lets the user create and manipulate objects of the ViewsController type
+ */
+
 public class ViewsController implements IViewsController {
 
 	private IViewsCatalog views;
 
+	/*
+	* Constructor of this class
+	 */
 	public ViewsController(IViewsCatalog views) {
 		this.views = views;
 	}

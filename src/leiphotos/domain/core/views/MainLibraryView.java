@@ -11,10 +11,19 @@ import leiphotos.domain.core.PhotoDeletedLibraryEvent;
 import leiphotos.domain.facade.IPhoto;
 import leiphotos.utils.Listener;
 
+/*
+* This class lets the user create and manipulate objects of the type MainLibraryView
+ */
 public class MainLibraryView extends ALibraryView implements Listener<LibraryEvent>  {
 
     private List<IPhoto> cache;
 
+    /*
+    * Constructor for the class MainLibraryView
+    *
+    * @param mainLib the given library where the view is based on
+    * @param p the condition that all photos of this view have to pass
+     */
     public MainLibraryView(MainLibrary mainLib, Predicate<IPhoto> p) {
         super(mainLib, p);
         cache = new LinkedList<>();
@@ -24,32 +33,27 @@ public class MainLibraryView extends ALibraryView implements Listener<LibraryEve
 
     @Override
     public List<IPhoto> getPhotos() {
-        cache.sort(criteria);
-        return cache;
-    }
-
-    @Override
-    public List<IPhoto> getMatches(String regexp) {
-        return cache.stream().filter(p -> p.matches(regexp)).toList();
+        return new LinkedList<>(cache);
     }
 
     @Override
     public void processEvent(LibraryEvent e) {
         
-        // verificar que o evento é relativo à library atual
+        // checks if the given event is relative to this library
         if (e.getLibrary() != lib) { return; }
 
         if (e instanceof PhotoAddedLibraryEvent && condition.test(e.getPhoto())) {
             cache.add(e.getPhoto());
+            cache.sort(criteria);
         }
         else if (e instanceof PhotoDeletedLibraryEvent && cache.contains(e.getPhoto())) {
             cache.remove(e.getPhoto());
         }
-        else if (e instanceof PhotoChangedLibraryEvent && cache.contains(e.getPhoto())) { // e instanceof PhotoChangedLibraryEvent
-            if (condition.test(e.getPhoto())) { // se a foto depois de alterada continua a pertencer à library
+        else if (e instanceof PhotoChangedLibraryEvent && cache.contains(e.getPhoto())) {
+            if (condition.test(e.getPhoto())) { // if the photo after being changed still passes the condition it is kept
                 cache.add(e.getPhoto());
             }
-            else { // se a foto depois de alterada deixa de pertencer à library
+            else { // if not, it is removed
                 cache.remove(e.getPhoto());
             }
         }

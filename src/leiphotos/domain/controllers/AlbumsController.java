@@ -9,15 +9,17 @@ import leiphotos.domain.albums.IAlbumsCatalog;
 import leiphotos.domain.facade.IAlbumsController;
 import leiphotos.domain.facade.IPhoto;
 
-
-//Class automatically generated so the code compiles
-//CHANGE ME
-
+/*
+* This class lets the user create and manipulate objects of the type AlbumsController
+ */
 public class AlbumsController implements IAlbumsController {
 
 	private IAlbumsCatalog catalog;
 	private String selected;
 
+	/*s
+	* Constructor of the class
+	 */
 	public AlbumsController(IAlbumsCatalog albumsCatalog) {
 		
 		this.catalog = albumsCatalog;

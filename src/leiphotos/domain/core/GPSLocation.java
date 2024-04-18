@@ -24,6 +24,7 @@ public record GPSLocation(double longitude, double latitude, String description)
         return description.matches(regexp); 
     }
 
+    @Override
     public String toString() {
         return "Lat:" + latitude + " , Long:" + longitude + ", Desc:" + description;
     }

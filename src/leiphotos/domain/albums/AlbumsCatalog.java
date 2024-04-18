@@ -23,7 +23,6 @@ public class AlbumsCatalog implements IAlbumsCatalog {
 	 * @param mainLib Library of the album catalog.
 	 */
 	public AlbumsCatalog(MainLibrary mainLib) {
-
 		this.mainLib = mainLib;
 		this.catalog = new HashMap<>();
 	}

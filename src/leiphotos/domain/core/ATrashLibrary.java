@@ -16,8 +16,19 @@ public abstract class ATrashLibrary implements TrashLibrary {
         numPhotos = 0;
     }
 
+    /*
+    * This method cleans the TrashLibrary's content
+    *
+    * @ensures that after using clean(), numPhotos == 0
+     */
     protected abstract void clean();
 
+    /*
+    * Checks if it's time to clean the TrashLibrary, in other words if it passed more than 30s before
+    * the last clean method call
+    *
+    * @return true if its time to clean, false therefore
+     */
     protected abstract boolean cleaningTime();
 
     @Override
@@ -34,7 +45,7 @@ public abstract class ATrashLibrary implements TrashLibrary {
         if (cleaningTime()) {
             clean();
         }
-        return photos;
+        return new LinkedList<>(photos);
     }
 
     @Override

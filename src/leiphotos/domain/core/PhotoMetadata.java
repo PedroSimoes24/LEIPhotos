@@ -13,12 +13,14 @@ public record PhotoMetadata(String camara, String manufacterer,
 	
 	@Override 
 	public boolean matches(String regexp) {
-		return camara.matches(regexp) || manufacterer.matches(regexp) || 
-		(location != null ? location.matches(regexp) : true);
+		// if any of the fields of photometadata match the regexp, then it returns true
+		return camara.matches(regexp) || manufacterer.matches(regexp) ||
+				(location != null ? location.matches(regexp) : false);
 	}
 
+	@Override
 	public String toString() {
-		return "[" + (location == null ? location.toString() : "") + ", " + camara + ", " + manufacterer + "]";
+		return "[" + (location != null ? location.toString() : "No Location") + ", " + camara + ", " + manufacterer + "]";
 	}
 
 }

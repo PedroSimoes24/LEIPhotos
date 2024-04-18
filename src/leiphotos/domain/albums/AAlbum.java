@@ -13,8 +13,8 @@ import leiphotos.domain.facade.IPhoto;
  */
 public abstract class AAlbum implements IAlbum {
 
-    String name;
-    List<IPhoto> photos;
+    private String name;
+    private List<IPhoto> photos;
 
     /**
      * Constructor for an album with the given name.
@@ -26,7 +26,6 @@ public abstract class AAlbum implements IAlbum {
         this.photos = new ArrayList<>();
     }
 
-    
     @Override
     public int numberOfPhotos() {
         return photos.size();
@@ -72,5 +71,12 @@ public abstract class AAlbum implements IAlbum {
         if (e instanceof PhotoDeletedLibraryEvent && photos.contains(p)) {
             photos.remove(p);
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("***** Album " + name + ": " + photos.size() + " photos *****");
+        photos.forEach(p -> sb.append(p.file().getPath() + "\n"));
+        return sb.toString();
     }
 }

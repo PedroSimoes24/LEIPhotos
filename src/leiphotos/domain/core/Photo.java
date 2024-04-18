@@ -62,9 +62,7 @@ public class Photo implements IPhoto, RegExpMatchable {
 	}
 
 	@Override
-	public void toggleFavourite() {
-		isFavourite = !isFavourite;
-	}
+	public void toggleFavourite() { isFavourite = !isFavourite; }
 
 	@Override
 	public Optional<? extends GPSCoordinates> getPlace() {
@@ -81,38 +79,16 @@ public class Photo implements IPhoto, RegExpMatchable {
 		return pathToFile;
 	}
 
-	/**
-	 * Changes the title of this photo to {@code newTitle}
-	 * 
-	 * @param newTitle new title of this photo
-	 * @ensures title().equals(newTitle)
-	 */
-
-	public void setTitle(String newTitle) {
-		title = newTitle;
-	}
-
-	/**
-	 * This method lets the user change the file path of this object
-	 * to the one passed as a parameter, therefore to {@code newPath}
-	 * 
-	 * @param newPath the new path of the object
-	 */
-
-	public void changeFilepath(String newPath) {
-		File temp = new File(newPath);
-		pathToFile = temp;
-	}
-
 	@Override 
 	public boolean matches(String regexp) {
 		return title.matches(regexp) || metadata.matches(regexp);
 	}
 
+	@Override
 	public String toString() {
-		return "File:" + pathToFile.toString() + "\n" +
+		return "File:" + pathToFile.getPath() + "\n" +
 				"Title:" + title + " Added:" + dateAddedLib.toString() + " Size:" + size +
-				"\n" + metadata.toString();
+				"\n" + metadata.toString() + " " + (isFavourite ? "FAV" : "");
 	}
 
 }
