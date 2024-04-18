@@ -36,11 +36,11 @@ public enum PhotoFactory {
 										 reader.getManufacturer(),
 										 reader.getDate(),
 									     coordinates == null ? null : new GPSLocation(coordinates[0], coordinates[1], ""));
+			return new Photo(title, LocalDateTime.now(), metadata, path);
 
 		} catch (JpegMetadataException e) {
-			metadata = new PhotoMetadata("No camera data", "No manufacturer data", LocalDateTime.MIN, null);
+			System.out.println("File " + title + " not found or could not be open");
 		}
 
-		return new Photo(title, LocalDateTime.now(), metadata, path);
 	}
 }
