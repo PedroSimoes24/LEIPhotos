@@ -14,6 +14,13 @@ import leiphotos.domain.facade.GPSCoordinates;
 
 class PhotoTest {
 
+	// file default para utilizar quando não importa para o teste
+	private static final File defaultFile = new File("photos/Bean.jpeg");
+	// metadata para utilizar quando não importa para o teste
+	private static final PhotoMetadata defaultMd = new PhotoMetadata("Canon", "SONY", 
+												LocalDateTime.now(), null);
+
+
 	@Test
 	void testCreatePhotoWithoutGPS() {
 		LocalDateTime expectedCapturedDate = LocalDateTime.of(2024, 1, 1, 0, 0);
@@ -60,6 +67,8 @@ class PhotoTest {
 		Photo photo = new Photo("testeToggleFavourite", null, null, new File("photos/Bean.jpeg"));
 		photo.toggleFavourite();
 		assertEquals(true, photo.isFavourite());
+		photo.toggleFavourite();
+		assertEquals(false, photo.isFavourite());
 	}
 
 	@Test
@@ -68,7 +77,9 @@ class PhotoTest {
 		MockFile expectedFile = new MockFile("photos/Bean.jpeg",expectedSize);
 		String expectedTitle = "Test Photo";
 		LocalDateTime expectedAddedDate = LocalDateTime.now();
-		//COMPLETE ME
+		
+		Photo photo = new Photo(expectedTitle,expectedAddedDate, null, expectedFile);
+		assertEquals(expectedSize,photo.size());
 	}
 
 	@Test
@@ -80,16 +91,34 @@ class PhotoTest {
 
 	@Test
 	void testMatchesTitle() {
-		String regexp = "Test.*";
-		//COMPLETE ME
+		String regexp1 = "TituloTeste.*";
+		Photo photo1 = new Photo("TituloTestedasdsad",LocalDateTime.now(), defaultMd, defaultFile);
+
+		String regexp2 = ".*Londres.*";
+		Photo photo2 = new Photo("QuandoEstiveEmLondres", LocalDateTime.now(), defaultMd, defaultFile);
+
+		String regexp3 = ".*2017-\\d+$";
+		Photo photo3 = new Photo("Praia2017-3", LocalDateTime.now(), defaultMd, defaultFile);
+
+
+
+		assertTrue(photo1.matches(regexp1));
+		assertTrue(photo2.matches(regexp2));
+		assertTrue(photo3.matches(regexp3));
 
 	}
 
 
 	@Test
 	void testMatchesFile() {
-		String regexp = "Test.*";
-		//COMPLETE ME
+
+		File path1 = new File("path/dir1/ooooooo/arquivo1.jpeg");
+		File path2 = new File("ola/pastaSecreta/adeus/arquivo2.txt");
+
+		String regexp1 = ".*";
+		Photo photo1 = new Photo("Nao importa 1", LocalDateTime.now(), defaultMd, path1);
+
+
 	}
 
 	@Test
