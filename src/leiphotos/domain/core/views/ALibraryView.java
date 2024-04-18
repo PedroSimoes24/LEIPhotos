@@ -62,4 +62,11 @@ public abstract class ALibraryView implements ILibraryView {
         criteria = c;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        getPhotos().forEach(p -> sb.append("\n" + p.toString()));
+        return sb.toString();
+    }
+
 }

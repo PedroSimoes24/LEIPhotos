@@ -75,8 +75,8 @@ public abstract class AAlbum implements IAlbum {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("***** Album " + name + ": " + photos.size() + " photos *****");
-        photos.forEach(p -> sb.append(p.file().getPath() + "\n"));
+        StringBuilder sb = new StringBuilder();
+        photos.forEach(p -> sb.append("\n" + p.file().getPath()));
         return sb.toString();
     }
 }

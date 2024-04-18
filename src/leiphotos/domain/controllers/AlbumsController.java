@@ -75,4 +75,9 @@ public class AlbumsController implements IAlbumsController {
 		return catalog.getAlbumsNames();
 	}
 
+	@Override
+	public String toString() {
+		return catalog.toString();
+	}
+
 }

@@ -40,4 +40,13 @@ public class ViewsCatalog implements IViewsCatalog {
 			default : return null;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "***** VIEWS *****" +
+				"\n***** VIEW ALL_MAIN: " + mainLibView.numberOfPhotos() + " photos *****" + mainLibView.toString() +
+				"\n***** VIEW ALL_TRASH: " + trashLibView.numberOfPhotos() + " photos *****" + trashLibView.toString() +
+				"\n***** VIEW FAVOURITES_MAIN: " + favouriteLibView.numberOfPhotos() + " photos *****" + favouriteLibView.toString() +
+				"\n***** VIEW MOST_RECENT: " + mostRecentLibView.numberOfPhotos() + " photos *****" + mostRecentLibView.toString();
+	}
 }

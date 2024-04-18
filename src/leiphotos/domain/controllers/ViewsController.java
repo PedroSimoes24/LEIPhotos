@@ -38,4 +38,9 @@ public class ViewsController implements IViewsController {
 		views.getView(v).setComparator(criteria);
 	}
 
+	@Override
+	public String toString() {
+		return views.toString();
+	}
+
 }

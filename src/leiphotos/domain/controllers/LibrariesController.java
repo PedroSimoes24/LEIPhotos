@@ -70,4 +70,9 @@ public class LibrariesController implements ILibrariesController {
 		return mainLib.getMatches(regExp);
 	}
 
+	@Override
+	public String toString() {
+		return mainLib.toString() + trashLib.toString();
+	}
+
 }

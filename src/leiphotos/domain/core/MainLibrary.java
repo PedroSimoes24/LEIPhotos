@@ -79,7 +79,7 @@ public class MainLibrary extends AbsSubject<LibraryEvent> implements Library {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("***** MAIN PHOTO LIBRARY: " + numPhotos + " photos *****");
+        StringBuilder sb = new StringBuilder("\n***** MAIN PHOTO LIBRARY: " + numPhotos + " photos *****");
         photos.forEach(p -> sb.append("\n" + p.toString()));
         return sb.toString();
     }

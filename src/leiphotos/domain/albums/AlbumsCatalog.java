@@ -101,4 +101,14 @@ public class AlbumsCatalog implements IAlbumsCatalog {
 		return catalog.keySet();
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder("\n***** ALBUMS *****");
+		for (String key : catalog.keySet()) {
+			IAlbum album = catalog.get(key);
+			sb.append("\n***** Album " + key + ": " + album.numberOfPhotos() + " photos *****" + album.toString());
+		}
+		return sb.toString();
+	}
+
 }
