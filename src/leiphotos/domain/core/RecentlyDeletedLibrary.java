@@ -14,7 +14,7 @@ import leiphotos.domain.facade.IPhoto;
 public class RecentlyDeletedLibrary extends ATrashLibrary {
 
 	private static final int TIME_TO_CLEAN = 15;
-	private LocalDateTime lastClean;
+	private LocalDateTime lastClean = LocalDateTime.now();
 
 	@Override
 	protected void clean() {

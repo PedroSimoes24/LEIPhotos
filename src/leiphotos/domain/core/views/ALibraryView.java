@@ -65,7 +65,7 @@ public abstract class ALibraryView implements ILibraryView {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        getPhotos().forEach(p -> sb.append("\n" + p.toString()));
+        getPhotos().forEach(p -> sb.append("\n" + p.file().getPath()));
         return sb.toString();
     }
 
