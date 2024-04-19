@@ -33,6 +33,7 @@ public class MainLibraryView extends ALibraryView implements Listener<LibraryEve
 
     @Override
     public List<IPhoto> getPhotos() {
+        cache.sort(criteria);
         return new LinkedList<>(cache);
     }
 

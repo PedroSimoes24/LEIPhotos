@@ -30,7 +30,7 @@ public class ViewsCatalog implements IViewsCatalog {
 		mainView = new MainLibraryView(mainLib, p -> true); // therefore all photos of the mainlib
 		trashView = new TrashLibraryView(trashLib);
 		favouritesView = new MainLibraryView(mainLib,IPhoto::isFavourite);
-		recentView = new MainLibraryView(mainLib, p -> (p.capturedDate() != null) && p.capturedDate().isAfter(LocalDateTime.now().minusMonths(12)));
+		recentView = new MainLibraryView(mainLib, p -> p.capturedDate().isAfter(LocalDateTime.now().minusMonths(12)));
 	}
 
 	@Override

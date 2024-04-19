@@ -2,6 +2,7 @@ package leiphotos.domain.core;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 import leiphotos.domain.facade.IPhoto;
@@ -20,7 +21,6 @@ public class RecentlyDeletedLibrary extends ATrashLibrary {
 	protected void clean() {
 		photos = new LinkedList<>();
 		lastClean = LocalDateTime.now();
-		numPhotos = 0;
 	}
 
 	@Override
