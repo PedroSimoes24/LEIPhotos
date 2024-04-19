@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f78b051b-dc23-4b62-b82b-c4d2d2f165e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/ATrashLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/ATrashLibrary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/RecentlyDeletedLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/RecentlyDeletedLibrary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/views/MainLibraryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/views/MainLibraryView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/views/ViewsCatalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/views/ViewsCatalog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/metadatareader/JavaXTMetadataReaderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/metadatareader/JavaXTMetadataReaderAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/GPSLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/GPSLocation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/Photo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/Photo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/PhotoMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/PhotoMetadata.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,16 +68,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LAST_COMMIT_MESSAGE" value="" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/leiphotos/client/SimpleClient.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

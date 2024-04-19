@@ -2,6 +2,7 @@ package leiphotos.domain.core;
 import leiphotos.utils.RegExpMatchable;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * This record stores relevant information of an photo, which is also known as metadata, and lets
@@ -23,7 +24,7 @@ public record PhotoMetadata(String camara, String manufacterer,
 	public String toString() {
 
 		return "[" + (location != null ? location.toString() : "No Location ") + ", "
-				   + (date != null ? date.toString() : "") + ", "
+				   + (date != null ? date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) : "") + ", "
 				   + (camara != null ? camara : "") + ", "
 				   + (manufacterer != null ? manufacterer : "") + "]";
 	}
