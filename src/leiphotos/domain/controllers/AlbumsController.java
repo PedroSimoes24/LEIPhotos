@@ -1,5 +1,6 @@
 package leiphotos.domain.controllers;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -33,7 +34,12 @@ public class AlbumsController implements IAlbumsController {
 
 	@Override
 	public void removeAlbum() {
-		selected = null;
+
+		if (selected != null) {
+			catalog.deleteAlbum(selected);
+			selected = null;
+		}
+
 	}
 
 	@Override
@@ -43,21 +49,19 @@ public class AlbumsController implements IAlbumsController {
 
 	@Override
 	public void addPhotos(Set<IPhoto> selectedPhotos) {
-
 		if (catalog.containsAlbum(selected)) 
 			catalog.addPhotos(selected, selectedPhotos);
 	}
 
 	@Override
 	public void removePhotos(Set<IPhoto> selectedPhotos) {
-
 		if (catalog.containsAlbum(selected))
 			catalog.removePhotos(selected, selectedPhotos);
 	}
 
 	@Override
 	public List<IPhoto> getPhotos() {
-		return catalog.getPhotos(selected);
+		return new LinkedList<>(catalog.getPhotos(selected));
 	}
 
 	@Override
