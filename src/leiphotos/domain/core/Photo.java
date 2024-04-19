@@ -4,7 +4,9 @@ import leiphotos.domain.facade.GPSCoordinates;
 import leiphotos.utils.RegExpMatchable;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 /**
@@ -81,14 +83,14 @@ public class Photo implements IPhoto, RegExpMatchable {
 
 	@Override 
 	public boolean matches(String regexp) {
-		return title.matches(regexp) || metadata.matches(regexp);
+		return title.matches(regexp) || metadata.matches(regexp) || file().getPath().matches(regexp);
 	}
 
 	@Override
 	public String toString() {
 		return "File:" + pathToFile.getPath() + "\n" +
-				"Title:" + title + " Added:" + dateAddedLib.toString() + " Size:" + size +
-				"\n" + metadata.toString() + " " + (isFavourite ? "FAV" : "");
+				"Title:" + title + " Added:" + dateAddedLib.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+				+ " Size:" + size + "\n" + metadata.toString() + " " + (isFavourite ? "FAV" : "");
 	}
 
 }

@@ -9,11 +9,9 @@ import leiphotos.domain.facade.IPhoto;
 public abstract class ATrashLibrary implements TrashLibrary {
 
     protected Collection<IPhoto> photos;
-    protected int numPhotos;
 
     protected ATrashLibrary() {
         photos = new LinkedList<>();
-        numPhotos = 0;
     }
 
     /*
@@ -33,7 +31,7 @@ public abstract class ATrashLibrary implements TrashLibrary {
 
     @Override
     public boolean deleteAll() {
-        if (numPhotos == 0) {
+        if (photos.isEmpty()) {
             return false;
         }
         photos = new LinkedList<>();
@@ -54,7 +52,6 @@ public abstract class ATrashLibrary implements TrashLibrary {
             return false;
         }
         photos.add(photo);
-        numPhotos++;
         return true;
     }
 
@@ -64,7 +61,6 @@ public abstract class ATrashLibrary implements TrashLibrary {
             return false;
         }
         photos.remove(photo);
-        numPhotos--;
         return true;
     }
 
@@ -72,18 +68,18 @@ public abstract class ATrashLibrary implements TrashLibrary {
     public Collection<IPhoto> getMatches(String regexp) {
         return photos.stream()
                      .filter(p -> p.matches(regexp))
-                     .collect(Collectors.toList());
+                     .toList();
     }
 
     @Override
     public int getNumberOfPhotos() {
-        return numPhotos;
+        return photos.size();
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("\n***** TRASH PHOTO LIBRARY: " + numPhotos + " photos *****");
-        getPhotos().forEach(p -> sb.append("\n" + p.toString()));
+        StringBuilder sb = new StringBuilder("***** TRASH PHOTO LIBRARY: " + getNumberOfPhotos() + " photos *****");
+        photos.forEach(p -> sb.append("\n" + p.toString()));
         return sb.toString();
     }
     

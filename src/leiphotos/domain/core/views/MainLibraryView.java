@@ -33,6 +33,7 @@ public class MainLibraryView extends ALibraryView implements Listener<LibraryEve
 
     @Override
     public List<IPhoto> getPhotos() {
+        cache.sort(criteria);
         return new LinkedList<>(cache);
     }
 
@@ -49,11 +50,11 @@ public class MainLibraryView extends ALibraryView implements Listener<LibraryEve
         else if (e instanceof PhotoDeletedLibraryEvent && cache.contains(e.getPhoto())) {
             cache.remove(e.getPhoto());
         }
-        else if (e instanceof PhotoChangedLibraryEvent && cache.contains(e.getPhoto())) {
-            if (condition.test(e.getPhoto())) { // if the photo after being changed still passes the condition it is kept
+        else if (e instanceof PhotoChangedLibraryEvent) {
+            if (condition.test(e.getPhoto()) && !cache.contains(e.getPhoto())) {
                 cache.add(e.getPhoto());
             }
-            else { // if not, it is removed
+            else if (!condition.test(e.getPhoto()) && cache.contains(e.getPhoto())) {
                 cache.remove(e.getPhoto());
             }
         }

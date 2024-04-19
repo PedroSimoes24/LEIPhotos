@@ -2,6 +2,8 @@ package leiphotos.domain.core;
 import leiphotos.domain.facade.GPSCoordinates;
 import leiphotos.utils.RegExpMatchable;
 
+import java.text.DecimalFormat;
+
 /**
  * This record represents an GPSLocation where each object has a set of coordinates
  * along with a suiting description.
@@ -26,6 +28,7 @@ public record GPSLocation(double longitude, double latitude, String description)
 
     @Override
     public String toString() {
-        return "Lat:" + latitude + " , Long:" + longitude + ", Desc:" + description;
+        return "{Lat:" + String.format("%.2f", latitude) +
+                " Long:" + String.format("%.2f", longitude) + ", Desc:" + description + "}";
     }
 }

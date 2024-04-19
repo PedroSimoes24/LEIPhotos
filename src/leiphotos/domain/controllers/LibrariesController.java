@@ -12,6 +12,8 @@ import leiphotos.domain.core.TrashLibrary;
 import leiphotos.domain.facade.ILibrariesController;
 import leiphotos.domain.facade.IPhoto;
 
+import javax.swing.text.html.Option;
+
 /*
 * This class lets the user create and manipulate objects of the type LibrariesController
  */
@@ -31,11 +33,15 @@ public class LibrariesController implements ILibrariesController {
 	@Override
 	public Optional<IPhoto> importPhoto(String title, String pathToPhotoFile) {
 		try {
-			IPhoto newPhoto = PhotoFactory.INSTANCE.createPhoto(title, pathToPhotoFile);
-			if (mainLib.addPhoto(newPhoto)) 
-				return Optional.of(newPhoto);
-			else 
+			Optional<IPhoto> newPhoto = Optional.ofNullable(PhotoFactory.INSTANCE.createPhoto(title, pathToPhotoFile));
+
+			if (newPhoto.isPresent() && mainLib.addPhoto(newPhoto.get())) {
+				return newPhoto;
+			}
+			else {
 				throw new Exception();
+			}
+
 		}
 		catch (Exception e) {
 			return Optional.empty();
@@ -72,7 +78,7 @@ public class LibrariesController implements ILibrariesController {
 
 	@Override
 	public String toString() {
-		return mainLib.toString() + trashLib.toString();
+		return mainLib.toString() + "\n" + trashLib.toString();
 	}
 
 }
