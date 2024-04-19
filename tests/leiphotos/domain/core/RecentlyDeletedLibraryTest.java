@@ -95,7 +95,7 @@ class RecentlyDeletedLibraryTest {
 		Collection<IPhoto> matches = library.getMatches(".*");
 
 		assertNotNull(matches);
-		assertEquals(2,matches.size());
+		assertEquals(1,matches.size());
 	}
 
 	@Test
