@@ -15,8 +15,8 @@ import leiphotos.domain.facade.IPhoto;
 
 class RecentlyDeletedLibraryTest {
 
-	private static final int SECONDS_IN_TRASH = 0; //CHANGE ME
-	private static final int SECONDS_TO_CHECK = 0;  //CHANGE ME
+	private static final int SECONDS_IN_TRASH = 20; //CHANGE ME
+	private static final int SECONDS_TO_CHECK = 10;  //CHANGE ME
 	
 	private RecentlyDeletedLibrary library;
 
@@ -37,8 +37,8 @@ class RecentlyDeletedLibraryTest {
 	@Test
 	void testAddExistingPhoto() {
 		MockPhoto photo = new MockPhoto(new File("Test.jpg"));
-
-		//COMPLETE ME
+		library.addPhoto(photo);
+		assertFalse(library.addPhoto(photo));
 	}
 
 
@@ -46,8 +46,10 @@ class RecentlyDeletedLibraryTest {
 	void testDeletePhoto() {
 		MockPhoto photo = new MockPhoto(new File("Test.jpg"));
 		library.addPhoto(photo);
+		library.deletePhoto(photo);
+		assertEquals(0,library.getNumberOfPhotos());
 		
-		//COMPLETE ME
+		
 		
 	}
 
@@ -56,8 +58,9 @@ class RecentlyDeletedLibraryTest {
 		MockPhoto photo1 = new MockPhoto(new File("One.jpg"));
 		MockPhoto photo2 = new MockPhoto(new File("Two.jpg"));
 		library.addPhoto(photo1);
-		
-		//COMPLETE ME
+		library.deletePhoto(photo2);
+
+		assertEquals(1, library.getNumberOfPhotos());
 	}
 
 
@@ -68,15 +71,19 @@ class RecentlyDeletedLibraryTest {
 		library.addPhoto(photo1);
 		library.addPhoto(photo2);
 
-		//COMPLETE ME
+		library.deleteAll();
+
+		assertEquals(0, library.getNumberOfPhotos());
+
+		
 	}
 
 	@Test
 	void testGetMatchesEmpty() {
 		Collection<IPhoto> matches = library.getMatches(".*");
 		assertNotNull(matches);
-
-		//COMPLETE ME
+		assertTrue(matches.isEmpty());
+		
 	}
 
 	@Test
@@ -87,8 +94,8 @@ class RecentlyDeletedLibraryTest {
 		library.addPhoto(photoN);
 		Collection<IPhoto> matches = library.getMatches(".*");
 
-		//COMPLETE ME
-		
+		assertNotNull(matches);
+		assertEquals(2,matches.size());
 	}
 
 	@Test
@@ -99,8 +106,8 @@ class RecentlyDeletedLibraryTest {
 		library.addPhoto(photo2);
 		Thread.sleep(SECONDS_IN_TRASH * 1000);
 		Collection<IPhoto> photos = library.getPhotos();
-		
-		//COMPLETE ME
+
+		assertTrue(photos.isEmpty());
 		
 	}
 
@@ -112,8 +119,8 @@ class RecentlyDeletedLibraryTest {
 		library.addPhoto(photo1);
 		library.addPhoto(photo2);
 		Collection<IPhoto> photos = library.getPhotos();
+		assertFalse(photos.isEmpty());
 		
-		//COMPLETE ME	
 	}
 
 	@Test
@@ -125,7 +132,7 @@ class RecentlyDeletedLibraryTest {
 		Thread.sleep(SECONDS_TO_CHECK * 1000);
 		Collection<IPhoto> photos = library.getPhotos();
 		
-		//COMPLETE ME
+		assertFalse(photos.isEmpty());
 	}
 	
 	//COMPLETE ME
