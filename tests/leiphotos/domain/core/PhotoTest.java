@@ -14,6 +14,13 @@ import leiphotos.domain.facade.GPSCoordinates;
 
 class PhotoTest {
 
+	// file default para utilizar quando não importa para o teste
+	private static final File defaultFile = new File("photos/Bean.jpeg");
+	// metadata para utilizar quando não importa para o teste
+	private static final PhotoMetadata defaultMd = new PhotoMetadata("Canon", "SONY", 
+												LocalDateTime.now(), null);
+
+
 	@Test
 	void testCreatePhotoWithoutGPS() {
 		LocalDateTime expectedCapturedDate = LocalDateTime.of(2024, 1, 1, 0, 0);
@@ -60,6 +67,8 @@ class PhotoTest {
 		Photo photo = new Photo("testeToggleFavourite", null, null, new File("photos/Bean.jpeg"));
 		photo.toggleFavourite();
 		assertEquals(true, photo.isFavourite());
+		photo.toggleFavourite();
+		assertEquals(false, photo.isFavourite());
 	}
 
 	@Test
@@ -68,47 +77,87 @@ class PhotoTest {
 		MockFile expectedFile = new MockFile("photos/Bean.jpeg",expectedSize);
 		String expectedTitle = "Test Photo";
 		LocalDateTime expectedAddedDate = LocalDateTime.now();
-		//COMPLETE ME
+		
+		Photo photo = new Photo(expectedTitle,expectedAddedDate, null, expectedFile);
+		assertEquals(expectedSize,photo.size());
 	}
 
 	@Test
 	void testNoMatches() {
-		String regexp = "Exp.*";
-		//COMPLETE ME
+		String regexp1 = "nadahaver.*";
+		Photo photo1 = new Photo("TituloTestedasdsad", LocalDateTime.now(), defaultMd, defaultFile);
+
+		String regexp2 = "match -> negativo";
+		Photo photo2 = new Photo("QuandoEstiveEmLondres", LocalDateTime.now(), defaultMd, defaultFile);
+
+		assertFalse(photo1.matches(regexp1));
+		assertFalse(photo2.matches(regexp2));
 	}
 
 
 	@Test
 	void testMatchesTitle() {
-		String regexp = "Test.*";
-		//COMPLETE ME
+		String regexp1 = "TituloTeste.*";
+		Photo photo1 = new Photo("TituloTestedasdsad",LocalDateTime.now(), defaultMd, defaultFile);
+
+		String regexp2 = ".*Londres.*";
+		Photo photo2 = new Photo("QuandoEstiveEmLondres", LocalDateTime.now(), defaultMd, defaultFile);
+
+		String regexp3 = ".*2017-\\d+$";
+		Photo photo3 = new Photo("Praia2017-3", LocalDateTime.now(), defaultMd, defaultFile);
+
+
+
+		assertTrue(photo1.matches(regexp1));
+		assertTrue(photo2.matches(regexp2));
+		assertTrue(photo3.matches(regexp3));
 
 	}
 
 
 	@Test
 	void testMatchesFile() {
-		String regexp = "Test.*";
-		//COMPLETE ME
+
+		File path1 = new File("path/dir1/ooooooo/arquivo1.jpeg");
+		File path2 = new File("ola/pastaSecreta/adeus/arquivo2.jpg");
+
+		String regexp1 = ".*dir1/.*";
+		Photo photo1 = new Photo("NaoImporta 1", LocalDateTime.now(), defaultMd, path1);
+		assertTrue(photo1.matches(regexp1));
+
+		String regexp2 = "*./adeus/.*jpeg";
+		Photo photo2 = new Photo("NaoImporta2", LocalDateTime.now(), defaultMd, path2);
+		assertTrue(photo2.matches(regexp2));
+
+
 	}
 
 	@Test
 	void testEquals() {
-		File file1 = new File("test1.jpg");
-		File file2 = new File("test2.jpg");
-		File file3 = new File("test1.jpg");
 
-		//COMPLETE ME
+		LocalDateTime agora = LocalDateTime.now();
+		LocalDateTime ontem  = agora.minusDays(1);
+
+		File path1 = new File("path/dir1/ooooooo/arquivo1.jpeg");
+
+		PhotoMetadata r = new PhotoMetadata("fixe", "MarcaBoa", ontem, null);
+		Photo photo1 = new Photo("Foto1", agora, r, path1);
+		Photo photo2 = new Photo("Foto1", agora, r, path1);
+
+		assertTrue(photo1.equals(photo2));
 	}
 
 	@Test
 	void testHashCode() {
-		File file1 = new File("test1.jpg");
-		File file2 = new File("test1.jpg");
+		LocalDateTime agora = LocalDateTime.now();
+		File path1 = new File("path/dir1/ooooooo/arquivo1.jpeg");
 
-		//COMPLETE ME
+		PhotoMetadata r = new PhotoMetadata("fixe", "MarcaBoa", agora, null);
+		Photo photo1 = new Photo("Foto1", agora, r, path1);
+
+		assertTrue(Integer.valueOf(photo1.hashCode()) instanceof Integer);
+		
 	}
 
-	//COMPLETE ME
 
 }

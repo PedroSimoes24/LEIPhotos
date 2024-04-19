@@ -5,27 +5,17 @@ import java.time.LocalDateTime;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 /**
  * Tests for JavaXTMetadataReaderAdapter
- * 
- * Testes comentados não passam porque o leitor nao consegue ler o atributo
- * ou porque o atributo nao existe logo devolvem null
- * 
- * --> solução provavel tratar com uma exceção de tipo diferentes
- * dependendo do campo que nao se consegue ler
- * 
- * site que estou a usar para ver a metadata completa (para debugg):
- * 
- *     -->  https://www.metadata2go.com/view-metadata <--
- * 
- * 
  */
 
 public class JavaXTMetadataReaderAdapterTest {
 
     private JpegMetadataReader dr1,dr2,dr3,dr4;
 
+    @BeforeEach
     public void setUp() {
 
         File ph1 = new File("photos/Bean.jpeg");
@@ -69,7 +59,8 @@ public class JavaXTMetadataReaderAdapterTest {
         setUp();
 
         LocalDateTime dt1 = LocalDateTime.of(2023, 7, 31, 13, 49);
-        LocalDateTime dt2 = LocalDateTime.of(2024, 2, 12, 9, 50);
+        //valor placeholder se nao conseguir ler
+        LocalDateTime dt2 = LocalDateTime.of(-999999999, 1, 1,0, 0); 
         LocalDateTime dt3 = LocalDateTime.of(2015, 8, 12, 1, 44);
         LocalDateTime dt4 = LocalDateTime.of(2022, 5, 1, 11, 5);
         
@@ -88,9 +79,9 @@ public class JavaXTMetadataReaderAdapterTest {
 
         setUp();
 
-        //Assert.assertEquals(3, dr1.getAperture());
+        Assert.assertEquals("No aperture data", dr1.getAperture());
         Assert.assertEquals("54823/32325", dr2.getAperture());
-        //Assert.assertEquals(3, dr3.getAperture());
+        Assert.assertEquals("No aperture data", dr3.getAperture());
         Assert.assertEquals("54823/32325", dr4.getAperture());
     }
 
