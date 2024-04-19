@@ -25,7 +25,7 @@ public class JavaXTMetadataReaderAdapter implements JpegMetadataReader {
         camera = dr.getCamara(); // != null ? dr.getCamara() : "No camera data";
         manufacturer = dr.getManufacturer();// != null ? dr.getManufacturer() : "No manufacturer data";
         aperture = dr.getAperture(); // != null ? dr.getAperture() : "No aperture data";
-        date = dr.getDate() != null ? LocalDateTime.parse(dr.getDate(), formatter) : LocalDateTime.MIN;
+        date = dr.getDate() != null ? LocalDateTime.parse(dr.getDate(), formatter).withSecond(0) : LocalDateTime.MIN;
         gpsLocation = dr.getGPS();
     }
 

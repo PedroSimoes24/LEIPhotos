@@ -79,9 +79,9 @@ public class JavaXTMetadataReaderAdapterTest {
 
         setUp();
 
-        Assert.assertEquals("No aperture data", dr1.getAperture());
+        Assert.assertEquals(null, dr1.getAperture());
         Assert.assertEquals("54823/32325", dr2.getAperture());
-        Assert.assertEquals("No aperture data", dr3.getAperture());
+        Assert.assertEquals(null, dr3.getAperture());
         Assert.assertEquals("54823/32325", dr4.getAperture());
     }
 
