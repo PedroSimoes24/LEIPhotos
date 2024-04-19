@@ -25,7 +25,7 @@ public enum PhotoFactory {
 	 */
 
 	public Photo createPhoto(String title, String pathToPhotoFile) throws java.io.FileNotFoundException {
-	
+
 		File path = new File(pathToPhotoFile);
 		PhotoMetadata metadata;
 
@@ -36,11 +36,14 @@ public enum PhotoFactory {
 										 reader.getManufacturer(),
 										 reader.getDate(),
 									     coordinates == null ? null : new GPSLocation(coordinates[0], coordinates[1], ""));
-			return new Photo(title, LocalDateTime.now(), metadata, path);
 
 		} catch (JpegMetadataException e) {
-			System.out.println("File " + title + " not found or could not be open");
+			System.out.println(e.getMessage());
+			return null;
+			//metadata = new PhotoMetadata("No camera data", "No manufacturer data", LocalDateTime.MIN, null);
+			//outprint cant create
 		}
 
+		return new Photo(title, LocalDateTime.now(), metadata, path);
 	}
 }

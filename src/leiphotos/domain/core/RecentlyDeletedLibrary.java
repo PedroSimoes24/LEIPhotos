@@ -20,6 +20,7 @@ public class RecentlyDeletedLibrary extends ATrashLibrary {
 	protected void clean() {
 		photos = new LinkedList<>();
 		lastClean = LocalDateTime.now();
+		numPhotos = 0;
 	}
 
 	@Override

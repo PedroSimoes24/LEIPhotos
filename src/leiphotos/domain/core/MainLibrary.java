@@ -14,7 +14,6 @@ import leiphotos.utils.AbsSubject;
 public class MainLibrary extends AbsSubject<LibraryEvent> implements Library {
 
     private Collection<IPhoto> photos;
-    private int numPhotos;
 
     /*
     * This method lets the user create an object of the type MainLibrary
@@ -22,12 +21,11 @@ public class MainLibrary extends AbsSubject<LibraryEvent> implements Library {
 
     public MainLibrary() {
         photos = new LinkedList<>();
-        numPhotos = 0;
     }
 
     @Override
     public int getNumberOfPhotos() {
-        return numPhotos;
+        return photos.size();
     }
 
     @Override
@@ -37,7 +35,6 @@ public class MainLibrary extends AbsSubject<LibraryEvent> implements Library {
         }
         photos.add(photo);
         emitEvent(new PhotoAddedLibraryEvent(photo, this));
-        numPhotos++;
         return true;
     }
 
@@ -48,7 +45,6 @@ public class MainLibrary extends AbsSubject<LibraryEvent> implements Library {
         }
         photos.remove(photo);
         emitEvent(new PhotoDeletedLibraryEvent(photo, this));
-        numPhotos--;
         return true;
     }
 
@@ -79,7 +75,7 @@ public class MainLibrary extends AbsSubject<LibraryEvent> implements Library {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("\n***** MAIN PHOTO LIBRARY: " + numPhotos + " photos *****");
+        StringBuilder sb = new StringBuilder("***** MAIN PHOTO LIBRARY: " + getNumberOfPhotos() + " photos *****");
         photos.forEach(p -> sb.append("\n" + p.toString()));
         return sb.toString();
     }

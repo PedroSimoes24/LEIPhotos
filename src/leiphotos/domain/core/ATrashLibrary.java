@@ -82,8 +82,8 @@ public abstract class ATrashLibrary implements TrashLibrary {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("\n***** TRASH PHOTO LIBRARY: " + numPhotos + " photos *****");
-        getPhotos().forEach(p -> sb.append("\n" + p.toString()));
+        StringBuilder sb = new StringBuilder("***** TRASH PHOTO LIBRARY: " + numPhotos + " photos *****");
+        photos.forEach(p -> sb.append("\n" + p.toString()));
         return sb.toString();
     }
     

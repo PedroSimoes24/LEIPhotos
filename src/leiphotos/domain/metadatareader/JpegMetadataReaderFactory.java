@@ -26,9 +26,12 @@ public enum JpegMetadataReaderFactory {
             throw new FileNotFoundException();
         }
 
+        if (!file.getPath().toLowerCase().endsWith(".jpeg") && !file.getPath().toLowerCase().endsWith(".jpg")) {
+            throw new JpegMetadataException("File " + file.getPath() + "could not be found or could not be open");
+        }
         // if it isn't a JPG or JPEG then it can't read metadata, therefore a JpegMetadataException is thrown
-        if (!isImageFile(file))
-            throw new JpegMetadataException("Not a .jpeg file");
+        //if (!isImageFile(file))
+        //    throw new JpegMetadataException("Not a .jpeg file");
 
         return new JavaXTMetadataReaderAdapter(file);
     }

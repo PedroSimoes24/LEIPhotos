@@ -1,6 +1,10 @@
 package leiphotos.domain.core.views;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.Period;
+
+import com.sun.tools.javac.Main;
 import leiphotos.domain.core.MainLibrary;
 import leiphotos.domain.core.TrashLibrary;
 import leiphotos.domain.facade.IPhoto;
@@ -12,11 +16,10 @@ import leiphotos.domain.facade.ViewsType;
 
 public class ViewsCatalog implements IViewsCatalog {
 
-	private MainLibraryView mainLibView;
-	private TrashLibraryView trashLibView;
-	private MainLibraryView favouriteLibView;
-	private MainLibraryView mostRecentLibView;
-
+	private MainLibraryView mainView;
+	private TrashLibraryView trashView;
+	private MainLibraryView favouritesView;
+	private MainLibraryView recentView;
 	/*
 	* Constructor for the class ViewsCatalog
 	*
@@ -24,19 +27,19 @@ public class ViewsCatalog implements IViewsCatalog {
 	* @param trashLib the trash library
 	 */
 	public ViewsCatalog(MainLibrary mainLib, TrashLibrary trashLib) {
-		mainLibView = new MainLibraryView(mainLib, p -> true); // therefore all photos of the mainlib
-		trashLibView = new TrashLibraryView(trashLib); 
-		favouriteLibView = new MainLibraryView(mainLib,IPhoto::isFavourite);
-		mostRecentLibView = new MainLibraryView(mainLib, p -> LocalDateTime.now().getYear() - p.addedDate().getYear() >= 1);
+		mainView = new MainLibraryView(mainLib, p -> true); // therefore all photos of the mainlib
+		trashView = new TrashLibraryView(trashLib);
+		favouritesView = new MainLibraryView(mainLib,IPhoto::isFavourite);
+		recentView = new MainLibraryView(mainLib, p -> (p.capturedDate() != null) && p.capturedDate().isAfter(LocalDateTime.now().minusMonths(12)));
 	}
 
 	@Override
 	public ILibraryView getView(ViewsType t) {
 		switch (t) {
-			case ALL_MAIN : return mainLibView;
-			case FAVOURITES_MAIN : return favouriteLibView;
-			case MOST_RECENT : return mostRecentLibView;
-			case ALL_TRASH : return trashLibView;
+			case ALL_MAIN : return mainView;
+			case ALL_TRASH : return trashView;
+			case FAVOURITES_MAIN : return favouritesView;
+			case MOST_RECENT : return recentView;
 			default : return null;
 		}
 	}
@@ -44,9 +47,9 @@ public class ViewsCatalog implements IViewsCatalog {
 	@Override
 	public String toString() {
 		return "***** VIEWS *****" +
-				"\n***** VIEW ALL_MAIN: " + mainLibView.numberOfPhotos() + " photos *****" + mainLibView.toString() +
-				"\n***** VIEW ALL_TRASH: " + trashLibView.numberOfPhotos() + " photos *****" + trashLibView.toString() +
-				"\n***** VIEW FAVOURITES_MAIN: " + favouriteLibView.numberOfPhotos() + " photos *****" + favouriteLibView.toString() +
-				"\n***** VIEW MOST_RECENT: " + mostRecentLibView.numberOfPhotos() + " photos *****" + mostRecentLibView.toString();
+				"\n***** VIEW ALL_MAIN: " + mainView.numberOfPhotos() + " photos *****" + mainView.toString() +
+				"\n***** VIEW ALL_TRASH: " + trashView.numberOfPhotos() + " photos *****" + trashView.toString() +
+				"\n***** VIEW FAVOURITES_MAIN: " + favouritesView.numberOfPhotos() + " photos *****" + favouritesView.toString() +
+				"\n***** VIEW MOST_RECENT: " + recentView.numberOfPhotos() + " photos *****" + recentView.toString();
 	}
 }

@@ -26,6 +26,6 @@ public record GPSLocation(double longitude, double latitude, String description)
 
     @Override
     public String toString() {
-        return "Lat:" + latitude + " , Long:" + longitude + ", Desc:" + description;
+        return "{Lat:" + latitude + " , Long:" + longitude + ", Desc:" + description + "}";
     }
 }

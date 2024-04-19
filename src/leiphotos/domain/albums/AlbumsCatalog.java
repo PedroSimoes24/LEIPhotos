@@ -103,10 +103,10 @@ public class AlbumsCatalog implements IAlbumsCatalog {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("\n***** ALBUMS *****");
+		StringBuilder sb = new StringBuilder("***** ALBUMS *****");
 		for (String key : catalog.keySet()) {
 			IAlbum album = catalog.get(key);
-			sb.append("\n***** Album " + key + ": " + album.numberOfPhotos() + " photos *****" + album.toString());
+			sb.append("\n" + album.toString());
 		}
 		return sb.toString();
 	}
