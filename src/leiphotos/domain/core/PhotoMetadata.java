@@ -24,7 +24,7 @@ public record PhotoMetadata(String camara, String manufacterer,
 	public String toString() {
 
 		return "[" + (location != null ? location.toString() : "No Location ") + ", "
-				   + (date != null ? date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) : "") + ", "
+				   + (date != null ? date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) : "") + ", "
 				   + (camara != null ? camara : "") + ", "
 				   + (manufacterer != null ? manufacterer : "") + "]";
 	}

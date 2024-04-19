@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f78b051b-dc23-4b62-b82b-c4d2d2f165e5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/GPSLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/GPSLocation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/Photo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/Photo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/PhotoMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/PhotoMetadata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/core/RecentlyDeletedLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/core/RecentlyDeletedLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/leiphotos/domain/metadatareader/JavaXTMetadataReaderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/leiphotos/domain/metadatareader/JavaXTMetadataReaderAdapter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

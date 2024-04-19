@@ -89,8 +89,20 @@ public class Photo implements IPhoto, RegExpMatchable {
 	@Override
 	public String toString() {
 		return "File:" + pathToFile.getPath() + "\n" +
-				"Title:" + title + " Added:" + dateAddedLib.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+				"Title:" + title + " Added:" + dateAddedLib.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
 				+ " Size:" + size + "\n" + metadata.toString() + " " + (isFavourite ? "FAV" : "");
 	}
 
+	@Override
+	public boolean equals(Object other) {
+		if (this == other) {
+			return true;
+		}
+
+		if (other == null || !(other instanceof Photo)) {
+			return false;
+		}
+
+		return metadata.equals(((Photo) other).metadata);
+	}
 }
